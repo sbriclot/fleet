@@ -1,0 +1,13 @@
+<h1><%= @action %> a shop</h1>
+
+<%= simple_form_for(@shop) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :tel %>
+  <%= f.input :home_url %>
+  <%= f.input :booking_url %>
+  <% if @action == "Edit" %>
+    <%= f.input :closed %>
+  <% end %>
+  <%= f.submit "#{@action} shop" %>
+<% end %>

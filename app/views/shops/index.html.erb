@@ -1,0 +1,28 @@
+<h1>Shops</h1>
+<label for="display_all">Display closed shops</label>
+<input id="display_all" type="checkbox" />
+<div>
+  <% @shops.each do |shop| %>
+    <% if shop.closed %>
+      <div class="shop closed hide">
+    <% else %>
+      <div class="shop">
+    <% end %>
+      <%= shop.name %>
+      <%= shop.address %>
+      <%= shop.tel %>
+      <% if shop.home_url.length > 0 %>
+        <%= link_to "Home", shop.home_url, :target => "_blank" %>
+      <% end %>
+      <% if shop.booking_url.length > 0 %>
+        <%= link_to "Booking", shop.booking_url, :target => "_blank" %>
+      <% end %>
+      <% if shop.closed %>
+        Closed
+      <% end %>
+      <%= link_to "Edit shop", edit_shop_path(shop.id) %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Add a shop", new_shop_path %>
