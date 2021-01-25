@@ -1,4 +1,4 @@
 class Operation < ApplicationRecord
   belongs_to :maintenance
-  belongs_to :maintenance_plan
+  belongs_to :maintenance_plan, optional: true
 end
