@@ -1,0 +1,15 @@
+<h1>INDEX VEHICLES</h1>
+
+<h2>Tous les véhicules (Temporaire)</h2> <!-- A supprimer -->
+<ul>
+    <% @all_vehicles.each do |vehicle| %>
+        <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> </li>
+    <% end %>
+</ul>
+
+<h2>Mes véhicules</h2>
+<ul>
+    <% @vehicles.each do |vehicle| %>
+        <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> </li>
+    <% end %>
+</ul>
