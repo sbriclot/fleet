@@ -4,8 +4,8 @@ class Shop < ApplicationRecord
   has_many :invoices
 
   validates :name, presence: true
-  validates :tel, format: { with: /\A\z|\A\+?\d+\z/, message: "Only numbers please (prepend by + for international numbers)" }
-  validates :home_url, :booking_url, format: { with: /\A\z|\A(http|www).+\.{1}.+\z/, message: "Invalid URL"}
+  validates :tel, format: { with: /\A\z|\A\+?\d+\z/, message: "Utiliser des chiffres seulement SVP (préfixe + autorisé pour les numéros internationaux)" }
+  validates :home_url, :booking_url, format: { with: /\A\z|\A(http|www).+\.{1}.+\z/, message: "URL invalide"}
 
   private
   def format_url

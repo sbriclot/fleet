@@ -7,29 +7,29 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    @action = "Add"
+    @action = "Ajouter"
   end
 
   def create
     @shop = Shop.new(shops_params)
     if @shop.save
-      redirect_to shops_path, notice: "#{@shop.name} successfully created"
+      redirect_to shops_path, notice: "#{@shop.name} créé"
     else
-      @action = "Add"
+      @action = "Ajouter"
       render :new
     end
   end
 
   def edit
-    @action = "Edit"
+    @action = "Editer"
   end
 
   def update
     if @shop.update(shops_params)
       @shop.save
-      redirect_to shops_path, notice: "#{@shop.name} successfully updated"
+      redirect_to shops_path, notice: "#{@shop.name} mis à jour"
     else
-      @action = "Edit"
+      @action = "Editer"
       render :edit
     end
   end

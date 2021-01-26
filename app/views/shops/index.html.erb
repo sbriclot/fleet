@@ -1,5 +1,5 @@
-<h1>Shops</h1>
-<label for="display_all">Display closed shops</label>
+<h1>Magasins</h1>
+<label for="display_all">Afficher les magasins fermés</label>
 <input id="display_all" type="checkbox" />
 <div>
   <% @shops.each do |shop| %>
@@ -20,9 +20,9 @@
       <% if shop.closed %>
         Closed
       <% end %>
-      <%= link_to "Edit shop", edit_shop_path(shop.id) %>
+      <%= link_to "Editer le magasin", edit_shop_path(shop.id) %>
     </div>
   <% end %>
 </div>
 
-<%= link_to "Add a shop", new_shop_path %>
+<%= link_to "Ajouter une magasin", new_shop_path %>
