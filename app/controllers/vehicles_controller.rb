@@ -11,6 +11,7 @@ class VehiclesController < ApplicationController
 
 	def new
 		@vehicle = Vehicle.new
+		@action = "Ajouter"
 	end
 	
 	def create
@@ -19,13 +20,15 @@ class VehiclesController < ApplicationController
 		@vehicle.user = user
 
 		if @vehicle.save
-      redirect_to vehicles_path, notice: "Vehicle successfully created"
-    else
-      render :new
+      		redirect_to vehicles_path, notice: "Vehicle successfully created"
+		else
+			@action = "Ajouter"
+      		render :new
 		end
 	end
 
 	def edit
+		@action = "Editer"
 	end
 
 	def update
@@ -33,6 +36,7 @@ class VehiclesController < ApplicationController
 			@vehicle.save
 			redirect_to vehicles_path, notice: "Vehicle successfully updated"
 		else
+			@action = "Editer"
 			render :edit
 		end
 	end
@@ -40,7 +44,7 @@ class VehiclesController < ApplicationController
 	private
 
 	def vehicle_params
-		params.require(:vehicle).permit(:brand, :model, :registration, :sn, :tank_capacity, :actual_km)
+		params.require(:vehicle).permit(:brand, :model, :registration, :sn, :tank_capacity, :actual_km, :purchase_date, :purchase_km, :sale_date, :sale_km)
 	end
 	
 	def set_vehicle
