@@ -11,15 +11,11 @@
       <%= shop.name %>
       <%= shop.address %>
       <%= shop.tel %>
-      <% unless shop.home_url.nil? %>
-        <% unless shop.home_url.empty? %>
+      <% unless shop.home_url.nil? || shop.home_url.empty? %>
           <%= link_to "Home", shop.home_url, :target => "_blank" %>
-        <% end %>
       <% end %>
-      <% unless shop.booking_url.nil? %>
-        <% unless shop.booking_url.empty? %>
+      <% unless shop.booking_url.nil? || shop.booking_url.empty? %>
           <%= link_to "Booking", shop.booking_url, :target => "_blank" %>
-        <% end %>
       <% end %>
       <% if shop.closed %>
         Closed

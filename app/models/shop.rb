@@ -17,8 +17,7 @@ class Shop < ApplicationRecord
 
   def format_url(arg)
     url = self[arg]
-    return if url.nil?
-    return if url.empty?
+    return if url.nil? || url.empty?
 
     self[arg] = "http://#{url}" unless url[%r{\Ahttp://}] || url[%r{\Ahttps://}]
   end
