@@ -35,6 +35,7 @@ class ShopsController < ApplicationController
   end
 
   private
+
   def set_shop
     @shop = Shop.find(params[:id])
   end
