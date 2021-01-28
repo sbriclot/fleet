@@ -1,0 +1,17 @@
+<h1><%= @action %> un véhicule !</h1>
+
+<%= simple_form_for(@vehicle) do |f| %>
+  <%= f.input :brand %>
+	<%= f.input :model %>
+	<%= f.input :registration %>
+	<%= f.input :sn %>
+	<%= f.input :tank_capacity %>
+	<%= f.input :actual_km %>
+	<%= f.input :total_expenses %>
+	<%= f.input :purchase_date %>
+	<%= f.input :purchase_km %>
+	<%= f.input :sale_date %>
+	<%= f.input :sale_km %>
+	<%= f.submit @action %>
+	<%= link_to "Annuler", vehicles_path %>
+<% end %>

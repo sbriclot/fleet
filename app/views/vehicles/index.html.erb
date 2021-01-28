@@ -1,5 +1,7 @@
 <h1>INDEX VEHICLES</h1>
 
+<%= link_to "Ajouter un véhicule", new_vehicle_path %>
+
 <h2>Tous les véhicules (Temporaire)</h2> <!-- A supprimer -->
 <ul>
     <% @all_vehicles.each do |vehicle| %>
@@ -10,6 +12,10 @@
 <h2>Mes véhicules</h2>
 <ul>
     <% @vehicles.each do |vehicle| %>
-        <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> </li>
+        <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> 
+        <br> <%= link_to "Fiche technique", vehicle_path(vehicle.id) %>
+        </li>
     <% end %>
 </ul>
+
+
