@@ -30,7 +30,7 @@ class InvoicesController < ApplicationController
   end
 
   def update
-    if Invoice.update(invoice_params)
+    if @invoice.update(invoice_params)
       redirect_to vehicle_invoice_path(@invoice), notice: 'Facture mise à jour'
     else
       @action = 'Modifier'
