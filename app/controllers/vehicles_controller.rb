@@ -44,10 +44,13 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:brand,
-                                    :model, :registration, :sn,
-                                    :tank_capacity, :actual_km, :purchase_date,
-                                    :purchase_km, :sale_date, :sale_km, :photo)
+    params.require(:vehicle).permit(:brand, :model,
+                                    :registration, :sn,
+                                    :tank_capacity,
+                                    :actual_km,
+                                    :purchase_date, :purchase_km,
+                                    :sale_date, :sale_km,
+                                    :photo)
   end
 
   def set_vehicle
