@@ -15,7 +15,9 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    # Ne fonctionne pas car n'est pas valide sans invoice_type_id mais j'ignore comment creer cela pour l'instant
     @invoice = Invoice.new(invoice_params)
+    @invoice.vehicle = @vehicle
 
     if @invoice.save
       redirect_to vehicle_invoice_path(@invoice), notice: 'Facture créee'
