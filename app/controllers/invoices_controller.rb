@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
-  before_action %i[show edit update]
+  before_action :set_invoice, only: %i[show edit update]
+  before_action :set_vehicle, only: %i[index new]
   def index
     @invoices = Invoice.where(vehicle_id: params[:vehicle_id])
   end
@@ -45,5 +46,9 @@ class InvoicesController < ApplicationController
 
   def set_invoice
     @invoice = Invoice.find(params[:id])
+  end
+
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:vehicle_id])
   end
 end
