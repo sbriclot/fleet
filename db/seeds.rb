@@ -41,7 +41,8 @@ peugeot = Shop.new(
   name: "Peugeot Remerschen",
   address: "124 route du Vin L-5440 Remerschen",
   tel: "+3522360501",
-  home_url: "www.peugeot.lu"
+  home_url: "www.peugeot.lu",
+  booking_url: "https://services-store.peugeot.lu"
 )
 peugeot.save
 afpneus = Shop.new(
@@ -51,6 +52,14 @@ afpneus = Shop.new(
   home_url: "www.afpneus.com"
 )
 afpneus.save
+bmw = Shop.new(
+  name: "BMW Bilia-Emond",
+  address: "184, Route de Thionville L-2610 Luxembourg",
+  tel: "+352 49 19 41 - 1",
+  home_url: "https://bilia-emond.bmw.lu/",
+  booking_url: ""
+)
+bmw.save
 
 # Insert Users
 p "- insert a test user..."

@@ -11,6 +11,7 @@
 @import "components/index";
 @import "pages/index";
 
+
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Saira&display=swap');
@@ -68,4 +69,8 @@ h3 {
   .container {
     width: 1170px;
   }
+
+.hide {
+  display: none;
+
 }
