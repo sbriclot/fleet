@@ -3,7 +3,14 @@
     <div><h1>Fleet</h1></div>
   <% end %>
   <div class="navbar-right">
-    <div><%= current_user.email %> </div>
-    <i class="fas fa-bars"></i>
+     <% if user_signed_in? %>
+        <div><%= current_user.email %> </div>
+        <i class="fas fa-bars"></i>
+     <% else %>
+         <%= link_to "Login", new_user_session_path %>
+      <% end %>
+   </div>
+</div>
+   
   </div>
 </div>
