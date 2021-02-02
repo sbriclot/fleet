@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :invoices, except: %i[destroy]
     resources :vehicle_fuels, except: %i[show edit update]
     resources :refuels, except: %i[show edit update]
-    resources :maintenance_plans, except: %i[show]
+    resources :maintenance_plans, except: %i[show new]
     resources :maintenances, except: %i[show] do
       resources :operations, except: %i[show]
     end
