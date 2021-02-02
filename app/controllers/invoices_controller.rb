@@ -10,6 +10,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @action = 'Ajouter'
   end
 
   def create
@@ -18,17 +19,20 @@ class InvoicesController < ApplicationController
     if @invoice.save
       redirect_to vehicle_invoice_path(@invoice), notice: 'Facture créee'
     else
+      @action = 'Ajouter'
       render :new
     end
   end
 
   def edit
+    @action = 'Modifier'
   end
 
   def update
     if Invoice.update(invoice_params)
       redirect_to vehicle_invoice_path(@invoice), notice: 'Facture mise à jour'
     else
+      @action = 'Modifier'
       render :edit
     end
   end

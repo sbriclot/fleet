@@ -1,0 +1,10 @@
+<h2> <%= @action %> une facture</h2>
+<% simple_form_for(@invoice) do |f| %>
+	<%= f.input :reference %>
+	<%= f.input :date %>
+	<%= f.input :km %>
+	<%= f.input :price %>
+	<%= f.input :remarks %>
+	<%= f.input :shops_id, collection: Shops.all %>
+	<%= f.button :submit, "#{@action}" %>
+<% end %>
