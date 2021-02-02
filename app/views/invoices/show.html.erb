@@ -1,9 +1,7 @@
 <h1>Facture numéro <%= @invoice.reference %></h1>
-
 <ul>
-<li>Fait le <%= @invoice.date %></li>
-<li>Réalisé à <%= @invoice.km %> km</li>
-<li>Coût: <%= @invoice.price %></li>
-<li>Fait par <%= @invoice.date %></li>
-<li>Date: <%= @invoice.date %></li>
+	<li>Fait le <%= @invoice.date %></li>
+	<li>Réalisé à <%= @invoice.km %> km</li>
+	<li>Coût: <%= @invoice.price %></li>
+	<li>Fait par <%= link_to @shop.name, shop_path(@shop) %></li>
 </ul>

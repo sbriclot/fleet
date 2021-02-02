@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    @shop = Shop.find(@invoice.shop_id)
   end
 
   def new
