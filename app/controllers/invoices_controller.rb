@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update]
-  before_action :set_vehicle, only: %i[index new]
+  before_action :set_vehicle, only: %i[index new create edit update]
   def index
     @invoices = Invoice.where(vehicle_id: params[:vehicle_id])
   end
@@ -41,7 +41,7 @@ class InvoicesController < ApplicationController
   private
 
   def invoice_params
-    params.require(:invoice).permit(:date, :km, :reference, :remarks, :price)
+    params.require(:invoice).permit(:date, :km, :reference, :remarks, :price, :invoice_ref, :shop_id)
   end
 
   def set_invoice
