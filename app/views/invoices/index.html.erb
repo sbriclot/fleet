@@ -1,0 +1,10 @@
+<h1>Index Invoices</h1>
+<% if @invoices %>
+	<ul>
+		<% @invoices.each do |invoice| %>
+			<li><%= link_to invoice.date vehicle_invoice_path(invoice) %> <%= invoice.km %> <%= invoice.price %></li>
+		<% else %>
+			<li>Ce vehicule n'a pas de factures pour l'instant</li>
+		</ul>
+	<% end %>
+	<%= link_to 'Ajouter une facture', new_vehicle_invoice %>
