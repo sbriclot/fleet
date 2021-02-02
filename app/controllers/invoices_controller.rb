@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
   before_action %i[show edit update]
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.where(vehicle_id: params[:vehicle_id])
   end
 
   def show
