@@ -7,4 +7,5 @@ class Vehicle < ApplicationRecord
   has_many :refuels
   has_many :reminders
   has_many :vehicle_fuels
+  has_one_attached :photo
 end
