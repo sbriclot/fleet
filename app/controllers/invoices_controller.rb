@@ -35,11 +35,6 @@ class InvoicesController < ApplicationController
 
   def update
     # Si il y a modification du prix, soustrait l'ancien prix et le remplace par le nouveau
-    @new_price = params[:invoice][:price].to_f
-    if @old_price != @new_price
-      @vehicle.total_expenses -= @old_price
-      @vehicle.total_expenses += new_price
-    end
 
     if @invoice.update(invoice_params)
       redirect_to vehicle_invoice_path(@vehicle, @invoice), notice: 'Facture mise à jour'
@@ -68,5 +63,11 @@ class InvoicesController < ApplicationController
 
   def old_invoice_price
     @old_price = @invoice.price
+    @new_price = params[:invoice][:price].to_f
+
+    return unless @old_price != @new_price
+
+    @vehicle.total_expenses -= @old_price
+    @vehicle.total_expenses += @new_price
   end
 end
