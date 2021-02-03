@@ -1,7 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update]
   before_action :set_vehicle
-  before_action :old_invoice_price, only: %i[update]
 
   def index
     @invoices = Invoice.where(vehicle_id: params[:vehicle_id])
@@ -35,6 +34,7 @@ class InvoicesController < ApplicationController
 
   def update
     # Si il y a modification du prix, soustrait l'ancien prix et le remplace par le nouveau
+    old_invoice_price
 
     if @invoice.update(invoice_params)
       redirect_to vehicle_invoice_path(@vehicle, @invoice), notice: 'Facture mise à jour'
