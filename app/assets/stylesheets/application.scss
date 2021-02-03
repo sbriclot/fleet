@@ -10,11 +10,10 @@
 @import "components/index";
 @import "pages/index";
 
-
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Saira&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 
 // ul {
 //   list-style: none;
@@ -25,19 +24,19 @@ a {
 }
 
 body {
-  background-color: #F2F6F8;
-  font-family: 'Roboto', sans-serif;
+  background-color: #f2f6f8;
+  font-family: "Roboto", sans-serif;
   margin: 0;
 }
 
 h1 {
-  font-family: 'lobster', cursive;
-  color: #0081C5;
+  font-family: "lobster", cursive;
+  color: #0081c5;
   margin: 0;
 }
 
 h2 {
-  font-family: 'Saira', sans-serif;
+  font-family: "Saira", sans-serif;
   color: #153445;
   margin: 0;
 }
@@ -68,8 +67,7 @@ h3 {
   .container {
     width: 1170px;
   }
-
+}
 .hide {
   display: none;
-
 }
