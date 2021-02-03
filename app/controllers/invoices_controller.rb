@@ -20,7 +20,7 @@ class InvoicesController < ApplicationController
     @invoice.vehicle = @vehicle
 
     if @invoice.save
-      redirect_to vehicle_invoice_path(@invoice), notice: 'Facture créee'
+      redirect_to vehicle_invoice_path(@vehicle, @invoice), notice: 'Facture créee'
     else
       @action = 'Ajouter'
       render :new
@@ -43,7 +43,7 @@ class InvoicesController < ApplicationController
   private
 
   def invoice_params
-    params.require(:invoice).permit(:date, :km, :reference, :remarks, :price, :invoice_ref, :shop_id)
+    params.require(:invoice).permit(:date, :km, :reference, :remarks, :price, :invoice_ref, :shop_id, :invoice_type_id)
   end
 
   def set_invoice

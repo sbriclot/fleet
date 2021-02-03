@@ -6,6 +6,7 @@
 	<%= f.input :price %>
 	<%= f.input :remarks %>
 	<%= f.input :shop_id, collection: Shop.all %>
+	<%= f.input :invoice_type_id, collection: InvoiceType.all %>
 	<%= f.button :submit, "#{@action}" %>
 <% end %>
 <%= link_to 'Liste des factures', vehicle_invoices_path %>
