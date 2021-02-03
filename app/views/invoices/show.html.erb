@@ -4,5 +4,6 @@
 	<li>Réalisé à <%= @invoice.km %> km</li>
 	<li>Coût: <%= @invoice.price %></li>
 	<li>Fait par <%= link_to @shop.name, shop_path(@shop) %></li>
+	<li><%= link_to 'Editer cette facture', edit_vehicle_invoice_path(@vehicle,@invoice) %></li>
 </ul>
 <%= link_to 'Liste des factures', vehicle_invoices_path %>
