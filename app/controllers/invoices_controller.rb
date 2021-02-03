@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     @invoice.vehicle = @vehicle
-    @vehicle.total_expenses += params[:invoice][:price]
+    @vehicle.total_expenses += params[:invoice][:price].to_f
 
     if @invoice.save
       redirect_to vehicle_invoice_path(@vehicle, @invoice), notice: 'Facture créee'
