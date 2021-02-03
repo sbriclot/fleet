@@ -1,0 +1,9 @@
+<h3><%= "#{@btn_txt} la tâche" %></h3>
+<%= simple_form_for [@vehicle, @plan] do |f| %>
+  <%= f.input :task %>
+  <%= f.input :details %>
+  <%= f.input :interval_km %>
+  <%= f.input :interval_months %>
+  <%= f.submit "Save" %>
+  <%= link_to "Cancel", vehicle_maintenance_plans_path %>
+<% end %>

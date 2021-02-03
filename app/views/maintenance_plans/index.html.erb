@@ -1,0 +1,37 @@
+<h2>Plan de maintenance</h2>
+<div class="container">
+  <div class="list-ops">
+    <div class="list-el"> <!--display flex-->
+      <div>Tâche</div>
+      <div>Intervale</div>
+      <div>Prochaine occurrence</div>
+    </div>
+    <% if @plans %>
+      <% @plans.each do |plan| %>
+        <div class="list-el"> <!--display flex-->
+          <div class="list-task">
+            <span><%= plan["task"] %></span>
+            <span class="list-subtask"><%= plan["details"] %></span>
+          </div>
+          <div>
+            <span><%= plan["int_km"] %></span>
+            <span><%= plan["int_months"] %></span>
+          </div>
+          <% next_class = "list-alert" if plan["next_km"] < 0 || plan["next_date"] < Time.now %>
+          <div class="<%= next_class %>">
+            <span><%= plan["next_km"] %></span>
+            </span><%= plan["next_date"].strftime("%d/%m/%Y") %></span>
+          </div>
+          <div>
+            <%= link_to "Edit", edit_vehicle_maintenance_plan_path(@vehicle, plan["id"]) %>
+             | 
+            <%= link_to "Del.", vehicle_maintenance_plan_path(@vehicle, plan["id"]), method: :delete, remote: true %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="list-edit">
+    <%= render "mp_edit" %>
+  </div>
+</div>
