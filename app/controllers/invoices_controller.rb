@@ -38,7 +38,7 @@ class InvoicesController < ApplicationController
 
     if @old_price != params[:invoice][:price]
       @vehicle.total_expenses -= @old_price
-      @vehicle.total_expenses += params[:invoice][:price].to_i
+      @vehicle.total_expenses += params[:invoice][:price].to_f
     end
 
     if @invoice.update(invoice_params)
