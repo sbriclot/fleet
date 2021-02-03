@@ -19,7 +19,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     @invoice.vehicle = @vehicle
-    @vehicle.total_expenses += params[:price]
+    @vehicle.total_expenses += params[:invoice][:price]
 
     if @invoice.save
       redirect_to vehicle_invoice_path(@vehicle, @invoice), notice: 'Facture créee'
@@ -35,6 +35,11 @@ class InvoicesController < ApplicationController
 
   def update
     # Si il y a modification du prix, soustrait l'ancien prix et le remplace par le nouveau
+
+    if @old_price != params[:invoice][:price]
+      @vehicle.total_expenses -= @old_price
+      @vehicle.total_expenses += params[:invoice][:price].to_i
+    end
 
     if @invoice.update(invoice_params)
       redirect_to vehicle_invoice_path(@vehicle, @invoice), notice: 'Facture mise à jour'
