@@ -1,22 +1,12 @@
-.navbar {
-  background-color: white;
-  
-  display: flex;
+.navbar-lewagon {
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  border-bottom: 1px solid #E4EDF1;
+  background: white;
 }
 
-.navbar-right {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #153445;
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
 }
 
-.fa-bars {
-  color: #E4EDF1;
-  font-size: 30px;
-  margin-left: 20px;
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
 }
