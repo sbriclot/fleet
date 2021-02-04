@@ -63,7 +63,7 @@ class InvoicesController < ApplicationController
   def update_total_expenses(old_price)
     return if old_price == @invoice.price
 
-    @vehicle.total_expenses += @invoice.price - old_price
+    @vehicle.total_expenses += (@invoice.price - old_price)
     @vehicle.save
   end
 end
