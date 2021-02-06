@@ -1,12 +1,14 @@
-<h2> <%= @action %> une facture</h2>
-<%= simple_form_for([@vehicle, @invoice]) do |f| %>
-	<%= f.input :invoice_ref %>
-	<%= f.input :date %>
-	<%= f.input :km %>
-	<%= f.input :price %>
-	<%= f.input :remarks %>
-	<%= f.input :shop_id, collection: Shop.all %>
-	<%= f.input :invoice_type_id, collection: InvoiceType.all %>
-	<%= f.button :submit, "#{@action}" %>
-<% end %>
-<%= link_to 'Liste des factures', vehicle_invoices_path %>
+<div>
+	<h2> <%= @action %> une facture</h2>
+	<%= simple_form_for([@vehicle, @invoice]) do |f| %>
+		<%= f.input :invoice_ref %>
+		<%= f.input :date %>
+		<%= f.input :km %>
+		<%= f.input :price %>
+		<%= f.input :remarks %>
+		<%= f.input :shop_id, collection: Shop.all %>
+		<%= f.input :invoice_type_id, collection: InvoiceType.all %>
+		<%= f.button :submit, "#{@action}" %>
+	<% end %>
+	<%= link_to 'Liste des factures', vehicle_invoices_path %>
+</div>
