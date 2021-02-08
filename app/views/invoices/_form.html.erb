@@ -1,13 +1,13 @@
 <div>
 	<h2> <%= @action %> une facture</h2>
 	<%= simple_form_for([@vehicle, @invoice]) do |f| %>
-		<%= f.input :invoice_ref %>
-		<%= f.input :date %>
-		<%= f.input :km %>
-		<%= f.input :price %>
+		<%= f.input :invoice_ref, error: "Veuillez renseigner la référence unique de votre facture" %>
+		<%= f.input :date, error:'Veuillez renseigner une date'%>
+		<%= f.input :km, error: 'Veuillez renseigner un kilométrage supérieur à 0' %>
+		<%= f.input :price error:'Veuillez renseigner un prix supérieur à 0'%>
 		<%= f.input :remarks %>
-		<%= f.input :shop_id, collection: Shop.all %>
-		<%= f.input :invoice_type_id, collection: InvoiceType.all %>
+		<%= f.association :shop, collection: Shop.order(:name), prompt: "Sélectionner un garage", error:' Veuillez selectionner un garage'%>
+		<%= f.association :invoice_type, collection: InvoiceType.order(:name), prompt: "Type d'opération réalisée", error:"Veuillez selectionner le type d'opération réalisée" %>
 		<%= f.button :submit, "#{@action}" %>
 	<% end %>
 	<%= link_to 'Liste des factures', vehicle_invoices_path %>
