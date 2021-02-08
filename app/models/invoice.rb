@@ -4,10 +4,10 @@ class Invoice < ApplicationRecord
   belongs_to :shop
   has_many_attached :docs
 
+  validates :invoice_ref, presence: true, uniqueness: true
   validates :date, presence: true
   validates :km, presence: true, numericality: { greater_than: 0 }
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :invoice_type_id, presence: true
-  validates :invoice_ref, presence: true, uniqueness: true
   validates :shop_id, presence: true
 end
