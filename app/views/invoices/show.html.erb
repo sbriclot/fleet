@@ -2,6 +2,7 @@
 	<h1>Facture numéro <%= @invoice.invoice_ref %></h1>
 	<div>
 		<ul>
+			<li>Type d'opération : <%= @invoice.invoice_type.name %></li>
 			<li>Fait le <%= @invoice.date %></li>
 			<li>Réalisé à <%= @invoice.km %> km</li>
 			<li>Coût: <%= @invoice.price %></li>

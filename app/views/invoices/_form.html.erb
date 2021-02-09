@@ -3,8 +3,8 @@
 	<%= simple_form_for([@vehicle, @invoice]) do |f| %>
 		<%= f.input :invoice_ref, error: "Veuillez renseigner la référence unique de votre facture", label: 'Référence de la facture' %>
 		<%= f.input :date, error:'Veuillez renseigner une date', label: 'Date'%>
-		<%= f.input :km, error: 'Veuillez renseigner un kilométrage supérieur à 0', label: 'Kilométrage' %>
-		<%= f.input :price, error:'Veuillez renseigner un prix supérieur à 0', label: 'Prix'%>
+		<%= f.input :km, error: 'Veuillez renseigner un kilométrage supérieur à 0', label: 'Kilométrage', input_html: {min: 0} %>
+		<%= f.input :price, error:'Veuillez renseigner un prix supérieur à 0', label: 'Prix', input_html: {min: 0}%>
 		<%= f.input :remarks, label:'Remarques' %>
 		<%= f.association :invoice_type, collection: InvoiceType.order(:name), prompt: "Sélectionner un type d'opération", error:"Veuillez sélectionner le type d'opération réalisée", label:"Type d'opération" %>
 		<%= f.association :shop, collection: Shop.order(:name), prompt: "Sélectionner un garage", error:' Veuillez sélectionner un garage', label:"Garage ayant réalisé l'opération"%>
