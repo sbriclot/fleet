@@ -14,7 +14,7 @@ class RefuelsController < ApplicationController
     @refuel = Refuel.new(params_refuel)
     @refuel.vehicle = @vehicle
     if @refuel.save
-      redirect_to vehicle_refuels_path
+      redirect_to vehicle_refuels_path, notice: "Création effectuée"
     else
       render :new
     end
@@ -22,7 +22,7 @@ class RefuelsController < ApplicationController
 
   def destroy
     @todelete = Refuel.find(params[:id])
-    redirect_to vehicle_refuels_path if @todelete.destroy
+    redirect_to vehicle_refuels_path, notice: 'Suppression effectuée' if @todelete.destroy
   end
 
   private
