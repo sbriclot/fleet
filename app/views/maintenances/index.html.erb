@@ -1,0 +1,26 @@
+<h2>Maintenances</h2>
+<div class="container">
+  <div class="list-ops">
+    <% if @maintenances %>
+      <% @maintenances.each do |maintenance| %>
+        <div class="list-el"> <!--display flex-->
+          <%= maintenance.date.strftime("%m/%d/%Y") %>
+          <%= "#{maintenance.km} km" %>
+          <%= pluralize(maintenance.nb_ops, "opération") %>
+          <%= link_to "Details", vehicle_maintenance_operations_path(params[:vehicle_id], maintenance) %>
+          | 
+          <%= link_to "Edit", edit_vehicle_maintenance_path(params[:vehicle_id], maintenance) %>
+          | 
+          <%= link_to "Del.", vehicle_maintenance_path(params[:vehicle_id], maintenance), method: :delete, remote: true %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="list-edit">
+    <%= render "m_edit" %>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Retour", vehicle_path(params[:vehicle_id]) %>
+</div>

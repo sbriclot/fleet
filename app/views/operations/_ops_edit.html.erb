@@ -1,0 +1,15 @@
+<h3><%= "#{@btn_txt} une opération" %></h3>
+<%= simple_form_for [@vehicle, @maintenance, @operation] do |f| %>
+  <%= f.association :maintenance_plan,
+    collection: MaintenancePlan.where(vehicle_id: params[:vehicle_id]).order(:task),
+    :label_method => lambda { |mp| "#{mp.task} | #{mp.interval_km} km | #{mp.interval_months} months" },
+    :value_method => lambda { |mp| mp.to_json },
+    prompt: "Sélectionner une maintenance type",
+    error:"Veuillez sélectionner la maintenance type à associer",
+    label:"Maintenance planifiée associée"
+  %>
+	<%= f.input :task %>
+  <%= f.input :details %>
+  <%= f.submit "Save" %>
+  <%= link_to "Cancel", vehicle_maintenance_operations_path %>
+<% end %>
