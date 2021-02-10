@@ -1,0 +1,21 @@
+<div>
+	<div>
+		<h1>Factures de votre <strong><%= link_to @vehicle.model, vehicle_path(@vehicle) %></strong></h1>
+		<h2>Immatriculation:  <em><%= @vehicle.registration %></em></h2>
+	</div>
+	<div>
+		<ul>
+			<% if @invoices %>
+				<% @invoices.each do |invoice| %>
+					<li><%= link_to "Référence: #{invoice.invoice_ref}", vehicle_invoice_path(@vehicle,invoice.id) %> <%=invoice.km %>kms <%= invoice.price %>€</li>
+				<% end %>
+			<% else %>
+				<li>Ce vehicule n'a pas de factures pour l'instant</li>
+			<% end %>
+		</ul>
+	</div>
+	<div>
+		<%= link_to 'Ajouter une facture', new_vehicle_invoice_path %>
+		<%= link_to "Retour à la fiche technique" , vehicle_path(@vehicle) %>
+	</div>
+</div>
