@@ -1,12 +1,23 @@
-<h1>Pleins de carburant du véhicule <%= @vehicle.model %></h1>
-<h3>Immatriculé : <%= @vehicle.registration %></h3>
-<ul>
-	<% @refuels.each do |refuel| %>
-		<div>
-			<li>Plein réalisé le : <%= refuel.date %></li>
-			<li>Kilométrage au moment du plein :<%= refuel.km %></li>
-			<li>Quantité de carburant : <%= refuel.quantity %></li>
-			<li>Prix du plein<%= refuel.price %></li>
-		</div>
+<div>
+	<h1>Pleins de carburant du véhicule <%= @vehicle.model %></h1>
+	<h3>Immatriculé : <%= @vehicle.registration %></h3>
+</div>
+<div>
+	<% if @refuels %>
+		<ul class = 'refuel-list'>
+			<% @refuels.each do |refuel| %>
+				<div class= 'refuel'>
+					<li>Plein réalisé le: <%= refuel.date %></li>
+					<li>Kilométrage au moment du plein: <%= refuel.km %> km</li>
+					<li>Quantité de carburant : <%= refuel.quantity %> litres</li>
+					<li>Prix du plein: <%= refuel.price %> €</li>
+				</div>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>Désolé, ce véhicule n'a pas encore de plein de carburant</p>
 	<% end %>
-</ul>
+</div>
+<div>
+	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>
+</div>

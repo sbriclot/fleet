@@ -3,7 +3,7 @@ class RefuelsController < ApplicationController
   before_action :find_vehicle, only: %i[index create]
 
   def index
-    @refuels = Refuel.where(params[:vehicle_id])
+    @refuels = Refuel.where(vehicle_id: params[:vehicle_id])
   end
 
   def new
@@ -30,6 +30,6 @@ class RefuelsController < ApplicationController
   end
 
   def find_vehicle
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
   end
 end
