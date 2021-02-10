@@ -21,7 +21,8 @@ class RefuelsController < ApplicationController
   end
 
   def destroy
-    @refuel.destroy
+    @todelete = Refuel.find(params[:id])
+    redirect_to vehicle_refuels_path if @todelete.destroy
   end
 
   private
