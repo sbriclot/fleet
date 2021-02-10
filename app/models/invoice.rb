@@ -15,6 +15,6 @@ class Invoice < ApplicationRecord
   def invoice_date_cannot_be_in_the_future
     return unless date.present? && date.strftime > Date.today.strftime
 
-    errors.add(:date, "Une facture ne peut être créée depuis le future")
+    errors.add(:date, "Une facture ne peut être créée dans le futur")
   end
 end
