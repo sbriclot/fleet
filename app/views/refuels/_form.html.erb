@@ -1,0 +1,8 @@
+<%= simple_form_for ([@vehicle,@refuel]) do |f| %>
+	<%= f.input :date, label: 'Date' %>
+	<%= f.input :km, label: 'Kilométrage au moment du plein' %>
+	<%= f.input :quantity,label: 'Quantité de carburant'%>
+	<%= f.input :price, label: 'Prix' %>
+	<%= f.input :fuel_id, collection: Fuel.all, label: 'Carburant utilisé' %>
+	<%= f.submit %>
+<% end %>

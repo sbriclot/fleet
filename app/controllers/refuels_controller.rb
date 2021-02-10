@@ -1,6 +1,6 @@
 class RefuelsController < ApplicationController
-  before_action :set_refuel, only: %i[create]
-  before_action :find_vehicle, only: %i[index create]
+  before_action :params_refuel, only: %i[create]
+  before_action :find_vehicle, only: %i[index create new]
 
   def index
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id])
@@ -11,6 +11,7 @@ class RefuelsController < ApplicationController
   end
 
   def create
+    @refuel = Refuel.new(params_refuel)
     @refuel.vehicle = @vehicle
     if @refuel.save
       redirect_to vehicle_refuels_path
@@ -25,8 +26,8 @@ class RefuelsController < ApplicationController
 
   private
 
-  def set_refuel
-    params(:refuel).permit(:date, :km, :quantity, :price, :fuel_id, :vehicle_id)
+  def params_refuel
+    params.require(:refuel).permit(:date, :km, :quantity, :price, :fuel_id, :vehicle_id)
   end
 
   def find_vehicle
