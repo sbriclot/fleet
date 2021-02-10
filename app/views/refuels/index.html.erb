@@ -1,6 +1,9 @@
 <div>
 	<h1>Pleins de carburant du véhicule <%= @vehicle.model %></h1>
-	<h3>Immatriculé : <%= @vehicle.registration %></h3>
+	<h3>Immatriculation : <%= @vehicle.registration %></h3>
+</div>
+<div>
+	<%= link_to 'Fiche technique du véhicule', vehicle_path(@vehicle) %>
 </div>
 <div>
 	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>

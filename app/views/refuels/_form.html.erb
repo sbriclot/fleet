@@ -4,5 +4,6 @@
 	<%= f.input :quantity,label: 'Quantité de carburant', input_html:{min:0}, error: 'Veuillez renseigner une quantité qui soit supérieure à 0'%>
 	<%= f.input :price, label: 'Prix', input_html:{min:0}, error: 'Veuillez renseigner un prix qui soit supérieur à 0' %>
 	<%= f.input :fuel_id, collection: Fuel.all, label: 'Carburant utilisé', prompt:'Sélectionner un carburant', error: 'Veuillez sélectionner un carburant' %>
-	<%= f.submit %>
+	<%= f.submit "Ajouter un plein" %>
 <% end %>
+<%= link_to 'Retour', vehicle_refuels_path %>
