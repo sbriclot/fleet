@@ -1,0 +1,36 @@
+form{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label{
+  display:flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0.4rem 0;
+}
+
+.submit{
+  border-radius: 20px;
+  border:none;
+  height:3rem;
+  width: 10rem;
+  color: #153445;
+  font-weight: bold;
+  margin: 0.8rem;
+}
+
+input{
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 3px rgba(21,52,69,0.6);
+  width: 10vw;
+  height: 5vh
+}
+
+.form-container{
+  width: 55vw;
+  margin: 0 auto;
+}
