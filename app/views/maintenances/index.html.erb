@@ -7,11 +7,11 @@
           <%= maintenance.date.strftime("%m/%d/%Y") %>
           <%= "#{maintenance.km} km" %>
           <%= pluralize(maintenance.nb_ops, "opération") %>
-          <%= link_to "Details", vehicle_maintenance_operations_path(params[:vehicle_id], maintenance) %>
+          <%= link_to "Details", vehicle_maintenance_operations_path(@vehicle, maintenance) %>
           | 
-          <%= link_to "Edit", edit_vehicle_maintenance_path(params[:vehicle_id], maintenance) %>
+          <%= link_to "Edit", edit_vehicle_maintenance_path(@vehicle, maintenance) %>
           | 
-          <%= link_to "Del.", vehicle_maintenance_path(params[:vehicle_id], maintenance), method: :delete, remote: true %>
+          <%= link_to "Del.", vehicle_maintenance_path(@vehicle, maintenance), method: :delete, remote: true %>
         </div>
       <% end %>
     <% end %>
@@ -22,5 +22,5 @@
 </div>
 
 <div>
-  <%= link_to "Retour", vehicle_path(params[:vehicle_id]) %>
+  <%= link_to "Retour", vehicle_path(@vehicle) %>
 </div>
