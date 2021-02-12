@@ -11,10 +11,10 @@ class MaintenancesController < ApplicationController
 
   def create
     @maintenance = Maintenance.new(maintenance_params)
-    @maintenance.vehicle_id = params[:vehicle_id]
+    @maintenance.vehicle = @vehicle
 
     if @maintenance.save
-      redirect_to vehicle_maintenance_operations_path(params[:vehicle_id], @maintenance)
+      redirect_to vehicle_maintenance_operations_path(@vehicle, @maintenance)
     else
       @btn_txt = "Ajouter"
       populate_index
@@ -29,9 +29,9 @@ class MaintenancesController < ApplicationController
   end
 
   def update
-    @maintenance.vehicle_id = params[:vehicle_id]
+    @maintenance.vehicle = @vehicle
     if @maintenance.update(maintenance_params)
-      redirect_to vehicle_maintenances_path(params[:vehicle_id])
+      redirect_to vehicle_maintenances_path(@vehicle)
     else
       @btn_txt = "Editer"
       populate_index

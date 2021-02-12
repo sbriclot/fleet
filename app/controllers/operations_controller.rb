@@ -12,11 +12,11 @@ class OperationsController < ApplicationController
 
   def create
     @operation = Operation.new(operation_params)
-    @operation.maintenance_id = params[:maintenance_id]
+    @operation.maintenance = @maintenance
     @operation.maintenance_plan_id = extract_mp_id
 
     if @operation.save
-      redirect_to vehicle_maintenance_operations_path(params[:vehicle_id], params[:maintenance_id])
+      redirect_to vehicle_maintenance_operations_path(@vehicle, @maintenance)
     else
       @btn_txt = "Ajouter"
       populate_index
@@ -33,7 +33,7 @@ class OperationsController < ApplicationController
   def update
     @operation.maintenance_plan_id = extract_mp_id
     if @operation.update(operation_params)
-      redirect_to vehicle_maintenance_operations_path(params[:vehicle_id], params[:maintenance_id])
+      redirect_to vehicle_maintenance_operations_path(@vehicle, @maintenance)
     else
       @btn_txt = "Editer"
       populate_index
