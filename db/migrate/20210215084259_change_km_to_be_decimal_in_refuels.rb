@@ -4,6 +4,9 @@ class ChangeKmToBeDecimalInRefuels < ActiveRecord::Migration[6.0]
     # Example : 1000,5km.
     reversible do |dir|
       dir.up do
+        # execute <<-SQL
+        # SELECT TRUNC(km ,2) FROM refuels;
+        # SQL
         change_column :refuels, :km, :decimal, precision:5, scale: 1
       end
 

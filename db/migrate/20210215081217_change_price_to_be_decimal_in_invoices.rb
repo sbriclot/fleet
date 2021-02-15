@@ -4,6 +4,10 @@ class ChangePriceToBeDecimalInInvoices < ActiveRecord::Migration[6.0]
       # Allows for up to 4 numbers before the comma and 2 decimals
       # Example: 1250€,25
       dir.up do
+        # execute <<-SQL
+        # SELECT TRUNC(price ,2) FROM refuels;
+        # SQL
+
         change_column :invoices, :price, :decimal, precision: 6, scale: 2
       end
 
