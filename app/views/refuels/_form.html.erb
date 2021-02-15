@@ -5,7 +5,7 @@
 		<%= f.input :km, label: 'Kilométrage au moment du plein', input_html: { min:0 }, error:'Veuillez renseigner un kilométrage qui soit supérieur à 0' %>
 		<%= f.input :quantity,label: 'Quantité de carburant', input_html: { min:0 }, error: 'Veuillez renseigner une quantité qui soit supérieure à 0'%>
 		<%= f.input :price, label: 'Prix', input_html: { min:0 }, error: 'Veuillez renseigner un prix qui soit supérieur à 0' %>
-		<%= f.input :fuel_id, collection: Fuel.all, label: 'Carburant utilisé', prompt:'Sélectionner un carburant', error: 'Veuillez sélectionner un carburant', input_html:{class:'select'}  %>
+		<%= f.input :fuel_id, collection: @vehicle_fuel, label: 'Carburant utilisé', prompt:'Sélectionner un carburant', error: 'Veuillez sélectionner un carburant', input_html:{class:'select'}  %>
 		<%= f.submit "Ajouter un plein", class: 'submit' %>
 	<% end %>
 </div>

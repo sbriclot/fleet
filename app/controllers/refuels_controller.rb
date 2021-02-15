@@ -1,9 +1,10 @@
 class RefuelsController < ApplicationController
   before_action :params_refuel, only: %i[create]
   before_action :find_vehicle, only: %i[index create new]
+  before_action :find_fuel, only: %i[new create]
 
   def index
-    @refuels = Refuel.where(vehicle_id: params[:vehicle_id])
+    @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
   end
 
   def new
@@ -21,8 +22,8 @@ class RefuelsController < ApplicationController
   end
 
   def destroy
-    @todelete = Refuel.find(params[:id])
-    redirect_to vehicle_refuels_path, notice: 'Suppression effectuée' if @todelete.destroy
+    @to_delete = Refuel.find(params[:id])
+    redirect_to vehicle_refuels_path, notice: 'Suppression effectuée' if @to_delete.destroy
   end
 
   private
@@ -33,5 +34,13 @@ class RefuelsController < ApplicationController
 
   def find_vehicle
     @vehicle = Vehicle.find(params[:vehicle_id])
+  end
+
+  def find_fuel
+    fuel_ids = []
+    VehicleFuel.find_each do |fuel|
+      fuel_ids << fuel.fuel_id
+    end
+    @vehicle_fuel = Fuel.find(fuel_ids)
   end
 end
