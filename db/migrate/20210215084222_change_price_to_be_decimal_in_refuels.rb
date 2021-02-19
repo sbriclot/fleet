@@ -5,9 +5,11 @@ class ChangePriceToBeDecimalInRefuels < ActiveRecord::Migration[6.0]
       # Allows for up to 3 numbers before the comma and 2 decimals
       # Example: 300,25€
       dir.up do
-        # execute <<-SQL
-        # SELECT TRUNC(price ,2) FROM refuels;
-        # SQL
+
+        execute <<-SQL
+          UPDATE refuels SET price = ROUND(price::numeric,2)
+        SQL
+
         change_column :refuels, :price, :decimal, precision: 5, scale: 2
       end
 

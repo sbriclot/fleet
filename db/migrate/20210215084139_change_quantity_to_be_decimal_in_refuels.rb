@@ -5,9 +5,10 @@ class ChangeQuantityToBeDecimalInRefuels < ActiveRecord::Migration[6.0]
       # Allows for up to 3 numbers before the comma and 2 decimals
       # Example: 150,25 liters
       dir.up do
-        # execute <<-SQL
-        # SELECT TRUNC(quantity ,2) FROM refuels;
-        # SQL
+
+        execute <<-SQL
+          UPDATE refuels SET quantity = ROUND(quantity::numeric,2)
+        SQL
 
         change_column :refuels, :quantity, :decimal, precision: 5, scale: 2
       end
