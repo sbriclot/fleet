@@ -38,7 +38,7 @@ class RefuelsController < ApplicationController
 
   def find_fuel
     fuel_ids = []
-    VehicleFuel.find_each do |fuel|
+    VehicleFuel.where(vehicle_id: params[:vehicle_id]).find_each do |fuel|
       fuel_ids << fuel.fuel_id
     end
     @vehicle_fuel = Fuel.find(fuel_ids)
