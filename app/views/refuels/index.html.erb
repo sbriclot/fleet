@@ -17,7 +17,7 @@
 					<li>Kilométrage au moment du plein: <%= refuel.km %> km</li>
 					<li>Quantité de carburant : <%= refuel.quantity %> litres</li>
 					<li>Prix du plein: <%= refuel.price %> €</li>
-					<li><%= link_to 'Supprimer ce plein',vehicle_refuel_path(@vehicle,refuel), method: "delete", data: {confirm: "Supprimer ce plein?"} %></li>
+					<li><%= link_to 'Supprimer ce plein',vehicle_refuel_path(@vehicle,refuel), method: "delete", data: {confirm: "Supprimer ce plein?"}, remote: true %></li>
 				</div>
 			<% end %>
 		</ul>
