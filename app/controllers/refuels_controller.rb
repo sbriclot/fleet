@@ -1,11 +1,17 @@
 class RefuelsController < ApplicationController
   before_action :params_refuel, only: %i[create]
   before_action :find_vehicle, only: %i[index create new]
-  before_action :find_fuel, only: %i[new create]
+  before_action :find_fuels, only: %i[new create]
 
   def index
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
     # Need to create array with informations to pass to dataset for charts
+    @refuels_dates = []
+    @refuels_price = []
+    @refuels.each do |refuel|
+      @refuels_dates << refuel.date
+      @refuels_price << refuel.price
+    end
   end
 
   def new
@@ -37,7 +43,7 @@ class RefuelsController < ApplicationController
     @vehicle = Vehicle.find(params[:vehicle_id])
   end
 
-  def find_fuel
+  def find_fuels
     fuel_ids = []
     VehicleFuel.where(vehicle_id: params[:vehicle_id]).find_each do |fuel|
       fuel_ids << fuel.fuel_id
