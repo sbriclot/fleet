@@ -1,15 +1,15 @@
 class ChangePriceToBeDecimalInInvoices < ActiveRecord::Migration[6.0]
   def change
     reversible do |dir|
-      # Allows for up to 4 numbers before the comma and 2 decimals
-      # Example: 1250€,25
+      # Allows for up to 5 numbers before the comma and 2 decimals
+      # Example: 10250€,25
       dir.up do
 
         execute <<-SQL
-          UPDATE invoices SET price = ROUND(price::numeric,2)
+        UPDATE invoices SET price = ROUND(price::numeric,2)
         SQL
 
-        change_column :invoices, :price, :decimal, precision: 6, scale: 2
+        change_column :invoices, :price, :decimal, precision: 7, scale: 2
       end
 
       # Allows to rollback
