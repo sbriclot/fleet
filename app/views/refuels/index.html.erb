@@ -9,6 +9,9 @@
 	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>
 </div>
 <div>
+	<canvas id='refuels-charts'></canvas>
+</div>
+<div>
 	<% if @refuels %>
 		<ul class = 'refuel-list'>
 			<% @refuels.each do |refuel| %>

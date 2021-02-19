@@ -5,6 +5,7 @@ class RefuelsController < ApplicationController
 
   def index
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
+    # Need to create array with informations to pass to dataset for charts
   end
 
   def new
