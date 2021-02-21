@@ -1,7 +1,7 @@
-<h3><%= "#{@btn_txt} une maintenance" %></h3>
+<h3><%= @action %> une maintenance</h3>
 <%= simple_form_for [@vehicle, @maintenance] do |f| %>
   <%= f.input :date %>
   <%= f.input :km %>
-  <%= f.submit "#{@btn_txt}" %>
+  <%= f.submit @action %>
   <%= link_to "Annuler", vehicle_maintenances_path %>
 <% end %>

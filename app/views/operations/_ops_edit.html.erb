@@ -1,4 +1,4 @@
-<h3><%= "#{@btn_txt} une opération" %></h3>
+<h3><%= @action %> une opération</h3>
 <%= simple_form_for [@vehicle, @maintenance, @operation] do |f| %>
   <%= f.association :maintenance_plan,
     collection: MaintenancePlan.where(vehicle_id: @vehicle).order(:task),
@@ -10,6 +10,6 @@
   %>
 	<%= f.input :task %>
   <%= f.input :details %>
-  <%= f.submit "#{@btn_txt}" %>
+  <%= f.submit @action %>
   <%= link_to "Annuler", vehicle_maintenance_operations_path %>
 <% end %>

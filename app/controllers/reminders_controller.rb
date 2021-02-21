@@ -5,7 +5,7 @@ class RemindersController < ApplicationController
   def index
     populate_index
     @reminder = Reminder.new
-    @btn_txt = "Ajouter"
+    @action = "Ajouter"
   end
 
   def create
@@ -15,14 +15,14 @@ class RemindersController < ApplicationController
     if @reminder.save
       redirect_to vehicle_reminders_path(@vehicle)
     else
-      @btn_txt = "Ajouter"
+      @action = "Ajouter"
       populate_index
       render "reminders/index"
     end
   end
 
   def edit
-    @btn_txt = 'Editer'
+    @action = 'Editer'
     populate_index
     render "reminders/index"
   end
@@ -32,7 +32,7 @@ class RemindersController < ApplicationController
     if @reminder.update(reminder_params)
       redirect_to vehicle_reminders_path(@vehicle)
     else
-      @btn_txt = "Editer"
+      @action = "Editer"
       populate_index
       render "reminders/index"
     end

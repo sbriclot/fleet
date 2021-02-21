@@ -5,7 +5,7 @@ class MaintenancePlansController < ApplicationController
   def index
     populate_index
     @plan = MaintenancePlan.new
-    @btn_txt = "Ajouter"
+    @action = "Ajouter"
   end
 
   def create
@@ -15,14 +15,14 @@ class MaintenancePlansController < ApplicationController
     if @plan.save
       redirect_to vehicle_maintenance_plans_path(@vehicle)
     else
-      @btn_txt = "Ajouter"
+      @action = "Ajouter"
       populate_index
       render "maintenance_plans/index"
     end
   end
 
   def edit
-    @btn_txt = 'Editer'
+    @action = 'Editer'
     populate_index
     render "maintenance_plans/index"
   end
@@ -32,7 +32,7 @@ class MaintenancePlansController < ApplicationController
     if @plan.update(plan_params)
       redirect_to vehicle_maintenance_plans_path(@vehicle)
     else
-      @btn_txt = "Editer"
+      @action = "Editer"
       populate_index
       render "maintenance_plans/index"
     end

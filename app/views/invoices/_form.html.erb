@@ -8,7 +8,7 @@
 		<%= f.input :remarks, label:'Remarques' %>
 		<%= f.association :invoice_type, collection: InvoiceType.order(:name), prompt: "Sélectionner un type d'opération", error:"Veuillez sélectionner le type d'opération réalisée", label:"Type d'opération" %>
 		<%= f.association :shop, collection: Shop.order(:name), prompt: "Sélectionner un garage", error:' Veuillez sélectionner un garage', label:"Garage ayant réalisé l'opération" %>
-		<%= f.button :submit, "#{@action}" %>
+		<%= f.button :submit, @action %>
 	<% end %>
 	<%= link_to 'Liste des factures', vehicle_invoices_path %>
 </div>
