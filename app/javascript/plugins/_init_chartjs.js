@@ -1,12 +1,12 @@
 import Chart from "chart.js";
 
 const refuelChart = () => {
-  const ctx = document.querySelector("#refuels-charts");
-  if (ctx) {
-    const price = JSON.parse(ctx.dataset.price);
-    const quantity = JSON.parse(ctx.dataset.quantity);
-    const dates = JSON.parse(ctx.dataset.dates)
-    new Chart(ctx, {
+  const ctxRefuels = document.querySelector("#refuels-charts");
+  if (ctxRefuels) {
+    const price = JSON.parse(ctxRefuels.dataset.price);
+    const quantity = JSON.parse(ctxRefuels.dataset.quantity);
+    const dates = JSON.parse(ctxRefuels.dataset.dates);
+    new Chart(ctxRefuels, {
       type: "bar",
       data: {
         labels: dates,
@@ -48,4 +48,13 @@ const refuelChart = () => {
   }
 };
 
-export { refuelChart };
+const averageChart = () => {
+  const ctxAverage = document.querySelector("#average-chart");
+  if (ctxAverage) {
+    new Chart(ctxAverage, {
+      type: "line",
+    });
+  }
+};
+
+export { refuelChart, averageChart };
