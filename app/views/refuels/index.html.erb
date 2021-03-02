@@ -9,7 +9,7 @@
 	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>
 </div>
 <div>
-	<canvas id='refuels-charts' data-price="<%= @refuels_price.to_json  %>" data-quantity="<%=@refuels_quantity.to_json%>"></canvas>
+	<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity= <%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.first(10).to_json %>></canvas>
 </div>
 <div>
 	<% if @refuels %>
