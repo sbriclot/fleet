@@ -25,11 +25,11 @@ require("channels");
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { indexToggleDisplay } from "../components/shops/indexToggleDisplay";
-// import { refuelChart } from "../plugins/_init_chartjs";
+import { refuelChart } from "../plugins/_init_chartjs";
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
   // initSelect2();
   indexToggleDisplay();
-  // refuelChart();
+  refuelChart();
 });
