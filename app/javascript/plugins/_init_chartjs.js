@@ -2,29 +2,22 @@ import Chart from "chart.js";
 
 const ctx = document.querySelector("#refuels-charts").getContext("2d");
 const refuelChart = new Chart(ctx, {
-  type: 'line',
+  type: "line",
   data: {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "Prix du plein",
         data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
+        backgroundColor: ["rgba(90,192,77, 1)"],
+        borderColor: ["rgba(30,111,20, 1)"],
+        borderWidth: 1,
+      },
+      {
+        label: "Quantité de carburant",
+        data: [55, 12, 36, 95, 45, 58],
+        backgroundColor: ["rgba(169,169,245, 1)"],
+        borderColor: ["rgba(49,4,180, 1)"],
         borderWidth: 1,
       },
     ],
