@@ -9,10 +9,12 @@
 	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>
 </div>
 <div>
+	<h4>Détail des 10 derniers pleins</h4>
 	<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.first(10).to_json %>></canvas>
 </div>
 <div>
-<canvas id='average-charts'></canvas>
+	<h4>Moyenne des dépenses mensuelles des 12 derniers mois</h4>
+	<canvas id='average-charts'></canvas>
 </div>
 <div>
 	<% if @refuels %>
