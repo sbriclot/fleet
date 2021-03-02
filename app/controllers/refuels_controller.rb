@@ -5,7 +5,7 @@ class RefuelsController < ApplicationController
 
   def index
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
-    # Need to create array with informations to pass to dataset for charts
+    # Data for the refuels details chart
     @refuels_dates = []
     @refuels_price = []
     @refuels_quantity = []
@@ -14,6 +14,12 @@ class RefuelsController < ApplicationController
       @refuels_price << refuel.price
       @refuels_quantity << refuel.quantity
     end
+
+    # Need to get the average spending for each month of the last 12 months.
+    # 1. Get the dates between now and 12 month ago.
+    # 1.1 From that fetch each refuel spending across this time.
+    # 2. For each month, average the refuel spending
+    # 2.1 Maybe do an object that contain each month with the average spending value
   end
 
   def new
