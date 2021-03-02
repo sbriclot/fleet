@@ -8,9 +8,11 @@ class RefuelsController < ApplicationController
     # Need to create array with informations to pass to dataset for charts
     @refuels_dates = []
     @refuels_price = []
+    @refuels_quantity = []
     @refuels.each do |refuel|
       @refuels_dates << refuel.date
       @refuels_price << refuel.price
+      @refuels_quantity << refuel.quantity
     end
   end
 
