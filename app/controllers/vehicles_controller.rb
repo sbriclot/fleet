@@ -33,7 +33,6 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
-      @vehicle.save
       redirect_to vehicle_path(@vehicle), notice: "Vehicle successfully updated"
     else
       @action = "Editer"

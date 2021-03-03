@@ -26,7 +26,6 @@ class ShopsController < ApplicationController
 
   def update
     if @shop.update(shops_params)
-      @shop.save
       redirect_to shops_path, notice: "#{@shop.name} mis à jour"
     else
       @action = "Editer"
