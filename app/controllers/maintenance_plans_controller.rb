@@ -1,9 +1,9 @@
 class MaintenancePlansController < ApplicationController
   before_action :set_plan, only: %i[edit update destroy]
   before_action :set_vehicle
+  before_action :populate_index, only: %i[index edit]
 
   def index
-    populate_index
     @plan = MaintenancePlan.new
     @action = "Ajouter"
   end
@@ -23,7 +23,6 @@ class MaintenancePlansController < ApplicationController
 
   def edit
     @action = 'Editer'
-    populate_index
     render "maintenance_plans/index"
   end
 

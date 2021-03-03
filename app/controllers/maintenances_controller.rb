@@ -1,10 +1,9 @@
 class MaintenancesController < ApplicationController
   before_action :set_maintenance, only: %i[show edit update destroy]
   before_action :set_vehicle, only: %i[index create edit update]
+  before_action :populate_index, only: %i[index edit]
 
   def index
-    populate_index
-
     @maintenance = Maintenance.new
     @action = "Ajouter"
   end
@@ -24,7 +23,6 @@ class MaintenancesController < ApplicationController
 
   def edit
     @action = 'Editer'
-    populate_index
     render "maintenances/index"
   end
 

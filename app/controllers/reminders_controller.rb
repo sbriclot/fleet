@@ -1,9 +1,9 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: %i[edit update destroy]
   before_action :set_vehicle
+  before_action :populate_index, only: %i[index edit]
 
   def index
-    populate_index
     @reminder = Reminder.new
     @action = "Ajouter"
   end
@@ -23,7 +23,6 @@ class RemindersController < ApplicationController
 
   def edit
     @action = 'Editer'
-    populate_index
     render "reminders/index"
   end
 

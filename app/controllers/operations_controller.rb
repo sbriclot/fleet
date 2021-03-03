@@ -2,10 +2,9 @@ class OperationsController < ApplicationController
   before_action :set_operation, only: %i[show edit update destroy]
   before_action :set_maintenance, only: %i[index create edit update]
   before_action :set_vehicle, only: %i[index create edit update]
+  before_action :populate_index, only: %i[index edit]
 
   def index
-    populate_index
-
     @operation = Operation.new
     @action = "Ajouter"
   end
@@ -26,7 +25,6 @@ class OperationsController < ApplicationController
 
   def edit
     @action = 'Editer'
-    populate_index
     render "operations/index"
   end
 
