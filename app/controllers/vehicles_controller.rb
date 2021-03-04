@@ -7,6 +7,15 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    sql = %{with vf as (select fuel_id, vehicle_id
+                        from   vehicle_fuels
+                        where  vehicle_id = #{@vehicle.id})
+            select f.id as id, f.name as name, vf.vehicle_id as checked
+            from   fuels f
+            left outer join vf on vf.fuel_id = f.id
+            order by f.name}
+
+    @vehicle_fuels = ActiveRecord::Base.connection.exec_query(sql)
   end
 
   def new

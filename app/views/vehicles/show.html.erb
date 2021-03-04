@@ -12,6 +12,18 @@
 	<li> <strong> sale_km :</strong> <%= @vehicle.sale_km %></li>
 </ul>
 
+<% if @vehicle_fuels %>
+  <div>
+    <% @vehicle_fuels.each do |vf| %>
+      <% f_name = vf["name"] %>
+      <div class="tag-item">
+        <%= check_box_tag f_name, vf["id"], vf["checked"], class: 'tag-selector' %>
+        <%= label_tag f_name, f_name %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <%= link_to "Editer ce véhicule", edit_vehicle_path(@vehicle) %>
 <br>
 <%= link_to "Plan de maintenance", vehicle_maintenance_plans_path(@vehicle) %>
