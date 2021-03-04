@@ -10,7 +10,7 @@
 	<%= f.input :total_expenses %>
 	<%= f.input :purchase_date %>
 	<%= f.input :purchase_km %>
-	<%= f.input :sale_date %>
+	<%= f.input :sale_date, include_blank: true %>
 	<%= f.input :sale_km %>
 	<%= f.submit @action %>
 	<%= link_to "Annuler", vehicles_path %>
