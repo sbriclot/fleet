@@ -2,12 +2,11 @@ class OperationsController < ApplicationController
   before_action :set_operation, only: %i[show edit update destroy]
   before_action :set_maintenance, only: %i[index create edit update]
   before_action :set_vehicle, only: %i[index create edit update]
+  before_action :populate_index, only: %i[index edit]
 
   def index
-    populate_index
-
     @operation = Operation.new
-    @btn_txt = "Ajouter"
+    @action = "Ajouter"
   end
 
   def create
@@ -18,15 +17,14 @@ class OperationsController < ApplicationController
     if @operation.save
       redirect_to vehicle_maintenance_operations_path(@vehicle, @maintenance)
     else
-      @btn_txt = "Ajouter"
+      @action = "Ajouter"
       populate_index
       render "operations/index"
     end
   end
 
   def edit
-    @btn_txt = 'Editer'
-    populate_index
+    @action = 'Editer'
     render "operations/index"
   end
 
@@ -35,7 +33,7 @@ class OperationsController < ApplicationController
     if @operation.update(operation_params)
       redirect_to vehicle_maintenance_operations_path(@vehicle, @maintenance)
     else
-      @btn_txt = "Editer"
+      @action = "Editer"
       populate_index
       render "operations/index"
     end

@@ -1,0 +1,27 @@
+<h2>Rappels</h2>
+<div class="list-ops">
+  <% if @reminders %>
+    <% @reminders.each do |reminder| %>
+      <div class="list-el"> <!--display flex-->
+        <div><%= reminder.task %></div>
+        <% remaining_km = reminder.creation_km + reminder.limit_km - @vehicle.actual_km if reminder.limit_km %>
+        <% next_class = "list-alert" if (remaining_km && remaining_km < 0) || (reminder.limit_date && reminder.limit_date < Time.now) %>
+        <div class="<%= next_class %>">
+          <%= "#{remaining_km} km" if remaining_km %>
+          <%= " ou " if (remaining_km && reminder.limit_date) %>
+          <%= reminder.limit_date.strftime("%d/%m/%Y") if reminder.limit_date %>
+        </div>
+        <%= link_to "Edit", edit_vehicle_reminder_path(@vehicle, reminder) %>
+        | 
+        <%= link_to "Del.", vehicle_reminder_path(@vehicle, reminder), method: :delete, remote: true %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="list-edit">
+  <%= render "rmd_edit" %>
+</div>
+
+<div>
+  <%= link_to "Retour", vehicle_path(@vehicle) %>
+</div>

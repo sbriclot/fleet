@@ -1,23 +1,21 @@
 <h2>Détails de la maintenance</h2>
 <%= "Réalisée le #{@maintenance.date.strftime("%d/%m/%Y")} à #{@maintenance.km} km " %>
 
-<div class="container">
-  <div class="list-ops">
-    <% if @operations %>
-      <% @operations.each do |operation| %>
-        <div class="list-el">
-          <div><%= operation.task %></div>
-          <div><%= operation.details %></div>
-          <%= link_to "Edit", edit_vehicle_maintenance_operation_path(@vehicle, @maintenance, operation) %>
-          | 
-          <div><%= link_to "Del.", vehicle_maintenance_operation_path(@vehicle, @maintenance, operation), method: :delete, remote: true %></div>
-        </div>
-      <% end %>
+<div class="list-ops">
+  <% if @operations %>
+    <% @operations.each do |operation| %>
+      <div class="list-el">
+        <div><%= operation.task %></div>
+        <div><%= operation.details %></div>
+        <%= link_to "Edit", edit_vehicle_maintenance_operation_path(@vehicle, @maintenance, operation) %>
+        | 
+        <div><%= link_to "Del.", vehicle_maintenance_operation_path(@vehicle, @maintenance, operation), method: :delete, remote: true %></div>
+      </div>
     <% end %>
-  </div>
-  <div class="list-edit">
-    <%= render "ops_edit" %>
-  </div>
+  <% end %>
+</div>
+<div class="list-edit">
+  <%= render "ops_edit" %>
 </div>
 
 <div>
