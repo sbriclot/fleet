@@ -41,6 +41,8 @@ class VehiclesController < ApplicationController
   end
 
   def update
+    update_vehicle_fuels if params[:vehicle][:fuel_ids]
+
     if @vehicle.update(vehicle_params)
       redirect_to vehicle_path(@vehicle), notice: "Vehicle successfully updated"
     else
@@ -56,12 +58,21 @@ class VehiclesController < ApplicationController
                                     :registration, :sn,
                                     :tank_capacity,
                                     :actual_km,
+                                    :total_expenses,
                                     :purchase_date, :purchase_km,
                                     :sale_date, :sale_km,
+                                    :fuel_ids,
                                     :photo)
   end
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
+  end
+
+  def update_vehicle_fuels
+    VehicleFuel.where(vehicle_id: @vehicle).destroy_all
+    params[:vehicle][:fuel_ids].each do |fuel|
+      VehicleFuel.create(vehicle_id: @vehicle.id, fuel_id: fuel)
+    end
   end
 end
