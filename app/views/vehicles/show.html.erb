@@ -12,7 +12,7 @@
 	<li> <strong> sale_km :</strong> <%= @vehicle.sale_km %></li>
 </ul>
 
-<%= form_for @vehicle do %>
+<%= form_for @vehicle, url: upd_vehicle_fuels_vehicle_path, method: :post, :html => { :id => "vf-update" } do %>
   <% @vehicle_fuels.each do |fuel| %>
     <% fuel_id = fuel["id"] %>
     <div class='tag-item'>
@@ -20,7 +20,6 @@
       <%= label_tag fuel_id, fuel["name"] %>
     </div>
   <% end %>
-  <%= submit_tag %>
 <% end %>
 
 <%= link_to "Editer ce véhicule", edit_vehicle_path(@vehicle) %>
