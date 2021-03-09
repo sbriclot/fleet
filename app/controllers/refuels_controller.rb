@@ -7,8 +7,8 @@ class RefuelsController < ApplicationController
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
     # Data for the refuels details chart
     last_ten_refuels_info(@refuels)
+    # Data for the twelve month history chart
     twelve_months_refuel_history
-    raise
   end
 
   def new
@@ -68,5 +68,6 @@ class RefuelsController < ApplicationController
     @refuel_history = Refuel.where(vehicle_id: params[:vehicle_id], date: @year_ago..@now)
     # 2. For each month, average the refuel spending
     # 2.1 Maybe do an object that contain each month with the average spending value
+    #Might be wise to use step or down_to from the Date class to sort out the corresponding months.
   end
 end
