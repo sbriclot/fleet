@@ -6,15 +6,7 @@ class RefuelsController < ApplicationController
   def index
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
     # Data for the refuels details chart
-    @refuels_dates = []
-    @refuels_price = []
-    @refuels_quantity = []
-    @refuels.each do |refuel|
-      @refuels_dates << refuel.date
-      @refuels_price << refuel.price
-      @refuels_quantity << refuel.quantity
-    end
-
+    last_ten_refuels_info(@refuels)
     # Need to get the average spending for each month of the last 12 months.
     # 1. Get the dates between now and 12 month ago.
     # 1.1 From that fetch each refuel spending across this time.
@@ -57,5 +49,16 @@ class RefuelsController < ApplicationController
       fuel_ids << fuel.fuel_id
     end
     @vehicle_fuel = Fuel.find(fuel_ids)
+  end
+
+  def last_ten_refuels_info(refuel_info)
+    @refuels_dates = []
+    @refuels_price = []
+    @refuels_quantity = []
+    refuel_info.each do |refuel|
+      @refuels_dates << refuel.date
+      @refuels_price << refuel.price
+      @refuels_quantity << refuel.quantity
+    end
   end
 end
