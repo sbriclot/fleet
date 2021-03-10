@@ -9,6 +9,7 @@ class RefuelsController < ApplicationController
     last_ten_refuels_info(@refuels)
     # Data for the twelve month history chart
     twelve_months_refuel_history
+    raise
   end
 
   def new
@@ -67,7 +68,14 @@ class RefuelsController < ApplicationController
     # 1.1 From that fetch each refuel spending across this time.
     @refuel_history = Refuel.where(vehicle_id: params[:vehicle_id], date: @year_ago..@now)
     # 2. For each month, average the refuel spending
+    months = { '01': 'Janvier', '02': 'Février', '03': 'Mars',
+               '04': 'Avril', '05': 'Mai', '06': 'Juin', '07': 'Juillet',
+               '08': 'Août', '09': 'Septembre', '10': 'Octobre',
+               '11': 'Novembre', '12': 'Décembre' }
+    if months.includes(@year_ago.strftime('%m'))
+      # Make the first label the corresponding month
+    end
     # 2.1 Maybe do an object that contain each month with the average spending value
-    #Might be wise to use step or down_to from the Date class to sort out the corresponding months.
+    # Might be wise to use step or down_to from the Date class to sort out the corresponding months.
   end
 end
