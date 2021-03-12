@@ -50,11 +50,14 @@ class VehiclesController < ApplicationController
   end
 
   def upd_vehicle_fuels
-    VehicleFuel.where(vehicle_id: @vehicle).destroy_all
-    return unless params[:vehicle]
+    return unless params["cb-fuel-id"]
 
-    params[:vehicle][:fuel_ids].each do |fuel|
-      VehicleFuel.create(vehicle_id: @vehicle.id, fuel_id: fuel)
+    @cb_fuel_id = params["cb-fuel-id"]
+
+    if params["cb-checked"] == "true"
+      VehicleFuel.create(vehicle_id: @vehicle.id, fuel_id: @cb_fuel_id)
+    else
+      VehicleFuel.where(vehicle_id: @vehicle.id, fuel_id: @cb_fuel_id).delete_all
     end
   end
 

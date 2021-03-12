@@ -12,15 +12,20 @@
 	<li> <strong> sale_km :</strong> <%= @vehicle.sale_km %></li>
 </ul>
 
-<%= form_for @vehicle, url: upd_vehicle_fuels_vehicle_path, method: :post, :html => { :id => "vf-update" } do %>
+<div>
   <% @vehicle_fuels.each do |fuel| %>
     <% fuel_id = fuel["id"] %>
+    <% fuel_name = fuel["name"] %>
     <div class='tag-item'>
-      <%= check_box_tag fuel_id, fuel_id, fuel["checked"], :name => 'vehicle[fuel_ids][]', class: 'tag-selector' %>
-      <%= label_tag fuel_id, fuel["name"] %>
+      <%= check_box_tag fuel_name, fuel_id, fuel["checked"], :name => fuel_name, class: 'tag-selector' %>
+      <%= label_tag fuel_name, fuel_name %>
     </div>
   <% end %>
-<% end %>
+  <%= form_for @vehicle, url: upd_vehicle_fuels_vehicle_path, method: :post, :html => { :id => "vf-update" } do %>
+    <%= hidden_field_tag 'cb-fuel-id' %>
+    <%= hidden_field_tag 'cb-checked' %>
+  <% end %>
+</div>
 
 <%= link_to "Editer ce véhicule", edit_vehicle_path(@vehicle) %>
 <br>
