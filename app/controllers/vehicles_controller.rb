@@ -53,7 +53,6 @@ class VehiclesController < ApplicationController
     return unless params["cb-fuel-id"]
 
     @cb_fuel_id = params["cb-fuel-id"]
-
     if params["cb-checked"] == "true"
       VehicleFuel.create(vehicle_id: @vehicle.id, fuel_id: @cb_fuel_id)
     else

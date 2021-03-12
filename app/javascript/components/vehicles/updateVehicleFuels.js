@@ -12,7 +12,7 @@ const updateVehicleFuels = () => {
       cbChecked.value = this.checked;
       //  submit the form
       frm.submit();
-      // reset the hidden fields
+      // reset the hidden fields (frm.reste() doesn't work)
       cbFuelId.value = "";
       cbChecked.value = "";
     }

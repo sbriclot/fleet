@@ -21,6 +21,7 @@
       <%= label_tag fuel_name, fuel_name %>
     </div>
   <% end %>
+  
   <%= form_for @vehicle, url: upd_vehicle_fuels_vehicle_path, method: :post, :html => { :id => "vf-update" } do %>
     <%= hidden_field_tag 'cb-fuel-id' %>
     <%= hidden_field_tag 'cb-checked' %>
