@@ -10,12 +10,12 @@
 </div>
 <% if @refuels %>
 	<div>
-		<h4>Détail des 10 derniers pleins</h4>
+		<h4>Détail des <span id='title-number'>10</span> derniers pleins</h4>
 		<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
 		<div>
-			<label for="refuel_number">Nombre de pleins</label>
-			<input type="range" id='refuel_number' min='0' max='25' value='25' step='5'>
-			<output for='refuel_number' id='number'></output>
+			<label for="refuel-number">Nombre de pleins</label>
+			<input type="range" id='refuel-number' min='5' max='25' value='10' step='5'>
+			<output for='refuel-number' id='number'>10</output>
 		</div>
 	</div>
 	<div>
