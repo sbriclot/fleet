@@ -1,13 +1,16 @@
+const inputSlider = document.querySelector("#refuel-number");
+const outputElement = document.querySelector("#number");
+const titleSpan = document.querySelector("#title-number");
 function outputValue() {
-  const inputSlider = document.querySelector("#refuel-number");
-  const outputValue = document.querySelector("#number");
-  const titleSpan = document.querySelector("#title-number");
   if (inputSlider) {
-    inputSlider.addEventListener("input", () => {
-      outputValue.value = inputSlider.value;
-      titleSpan.textContent = inputSlider.value;
-    });
+    window.addEventListener("load", updateValue);
+    inputSlider.addEventListener("input", updateValue);
   }
+}
+
+function updateValue() {
+  outputElement.value = inputSlider.value;
+  titleSpan.textContent = inputSlider.value;
 }
 
 export { outputValue };
