@@ -12,6 +12,11 @@
 	<div>
 		<h4>Détail des 10 derniers pleins</h4>
 		<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
+		<div>
+			<label for="refuel_number">Nombre de pleins</label>
+			<input type="range" id='refuel_number' min='0' max='25' value='25' step='5'>
+			<output for='refuel_number' id='number'></output>
+		</div>
 	</div>
 	<div>
 		<h4>Moyenne des dépenses mensuelles des 12 derniers mois</h4>
