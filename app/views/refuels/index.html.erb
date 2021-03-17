@@ -8,28 +8,17 @@
 <div>
 	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>
 </div>
-<div>
-	<h4>Détail des 10 derniers pleins</h4>
-	<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
-</div>
-<div>
-	<h4>Moyenne des dépenses mensuelles des 12 derniers mois</h4>
-	<canvas id='average-charts' data-average = <%=@average_price.to_json%> data-months= <%= @average_date.to_json %>></canvas>
-</div>
-<div>
-	<% if @refuels %>
-		<ul class = 'refuel-list'>
-			<% @refuels.each do |refuel| %>
-				<div class= 'refuel'>
-					<li>Plein réalisé le: <%= refuel.date %></li>
-					<li>Distance parcourue: <%= refuel.km %> km</li>
-					<li>Quantité de carburant : <%= refuel.quantity %> litres</li>
-					<li>Prix du plein: <%= refuel.price %> €</li>
-					<li><%= link_to 'Supprimer ce plein',vehicle_refuel_path(@vehicle,refuel), method: "delete", data: {confirm: "Supprimer ce plein?"}, remote: true %></li>
-				</div>
-			<% end %>
-		</ul>
+<% if @refuels %>
+	<div>
+		<h4>Détail des 10 derniers pleins</h4>
+		<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
+	</div>
+	<div>
+		<h4>Moyenne des dépenses mensuelles des 12 derniers mois</h4>
+		<canvas id='average-charts' data-average = <%=@average_price.to_json%> data-months= <%= @average_date.to_json %>></canvas>
+	</div>
+	<div>
 	<% else %>
 		<p>Désolé, ce véhicule n'a pas encore de plein de carburant</p>
-	<% end %>
-</div>
+	</div>
+<% end %>
