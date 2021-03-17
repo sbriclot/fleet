@@ -10,11 +10,11 @@
 </div>
 <div>
 	<h4>Détail des 10 derniers pleins</h4>
-	<canvas id='refuels-charts' data-price=<%= @refuels_price.take(10).reverse.to_json %> data-quantity=<%= @refuels_quantity.take(10).reverse.to_json %> data-dates=<%= @refuels_dates.take(10).reverse.to_json %>></canvas>
+	<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
 </div>
 <div>
 	<h4>Moyenne des dépenses mensuelles des 12 derniers mois</h4>
-	<canvas id='average-charts'></canvas>
+	<canvas id='average-charts' data-average = <%=@average_price.to_json%> data-months= <%= @average_date.to_json %>></canvas>
 </div>
 <div>
 	<% if @refuels %>

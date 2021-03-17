@@ -50,10 +50,24 @@ const refuelChart = () => {
 };
 
 const averageChart = () => {
-  const ctxAverage = document.querySelector("#average-chart");
+  const ctxAverage = document.querySelector("#average-charts");
   if (ctxAverage) {
+    const average = JSON.parse(ctxAverage.dataset.average);
+    const dates = JSON.parse(ctxAverage.dataset.months);
     new Chart(ctxAverage, {
       type: "line",
+      data: {
+        labels: dates,
+        datasets: [
+          {
+            label: "Dépense mensuelle moyenne",
+            data: average,
+            backgroundColor: "rgba(169,169,245, 1)",
+            borderColor: "rgba(49,4,180, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
     });
   }
 };

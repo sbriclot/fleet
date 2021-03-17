@@ -4,12 +4,11 @@ class RefuelsController < ApplicationController
   before_action :find_fuels, only: %i[new create]
 
   def index
-    @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(created_at: :desc)
+    @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(:created_at).last(10)
     # Data for the refuels details chart
     last_ten_refuels_info(@refuels)
     # Data for the twelve month history chart
     twelve_months_refuel_history
-    raise
   end
 
   def new
@@ -61,21 +60,14 @@ class RefuelsController < ApplicationController
   end
 
   def twelve_months_refuel_history
-    # Need to get the average spending for each month of the last 12 months.
-    # 1. Get the dates between now and 12 month ago.
-    @now = Date.today
-    @year_ago = @now.prev_year
-    # 1.1 From that fetch each refuel spending across this time.
-    @refuel_history = Refuel.where(vehicle_id: params[:vehicle_id], date: @year_ago..@now)
-    # 2. For each month, average the refuel spending
-    months = { '01': 'Janvier', '02': 'Février', '03': 'Mars',
-               '04': 'Avril', '05': 'Mai', '06': 'Juin', '07': 'Juillet',
-               '08': 'Août', '09': 'Septembre', '10': 'Octobre',
-               '11': 'Novembre', '12': 'Décembre' }
-    if months.includes(@year_ago.strftime('%m'))
-      # Make the first label the corresponding month
+    refuel_history = Refuel.where("date >= current_date - 365")
+                           .order("DATE_TRUNC('month', date)")
+                           .group("DATE_TRUNC('month', date)")
+                           .average(:price)
+
+    @average_price = refuel_history.transform_values(&:round).values
+    @average_date = refuel_history.transform_keys! do |key|
+      key.strftime("%m/%Y")
     end
-    # 2.1 Maybe do an object that contain each month with the average spending value
-    # Might be wise to use step or down_to from the Date class to sort out the corresponding months.
   end
 end
