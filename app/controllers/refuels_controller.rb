@@ -66,8 +66,9 @@ class RefuelsController < ApplicationController
                            .average(:price)
 
     @average_price = refuel_history.transform_values(&:round).values
-    @average_date = refuel_history.transform_keys! do |key|
+    date = refuel_history.transform_keys! do |key|
       key.strftime("%m/%Y")
     end
+    @average_date = date.keys
   end
 end

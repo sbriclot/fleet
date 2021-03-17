@@ -55,7 +55,7 @@ const averageChart = () => {
     const average = JSON.parse(ctxAverage.dataset.average);
     const dates = JSON.parse(ctxAverage.dataset.months);
     new Chart(ctxAverage, {
-      type: "line",
+      type: "bar",
       data: {
         labels: dates,
         datasets: [
