@@ -62,8 +62,8 @@ const averageChart = () => {
           {
             label: "Dépense mensuelle moyenne",
             data: average,
-            backgroundColor: "rgba(169,169,245, 1)",
-            borderColor: "rgba(49,4,180, 1)",
+            backgroundColor: "rgba(90,192,77, 0.5)",
+            borderColor: "rgba(30,111,20, 1)",
             borderWidth: 1,
           },
         ],
