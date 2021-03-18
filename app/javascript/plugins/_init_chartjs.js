@@ -1,4 +1,20 @@
 import Chart from "chart.js";
+let sliderValue = 10;
+const removeData = (chart) => {
+  const sliderInput = document.querySelector("#refuel-number");
+  if (sliderInput) {
+    sliderInput.addEventListener("input", () => {
+      if (sliderInput.value < sliderValue) {
+        chart.data.labels.splice(-sliderInput.value, 5);
+        chart.data.datasets.forEach((dataset) => {
+          dataset.data.splice(-sliderInput.value, 5);
+        });
+      }
+      sliderValue = sliderInput.value;
+      chart.update();
+    });
+  }
+};
 
 const refuelChart = () => {
   const ctxRefuels = document.querySelector("#refuels-charts");
@@ -6,8 +22,7 @@ const refuelChart = () => {
     const price = JSON.parse(ctxRefuels.dataset.price);
     const quantity = JSON.parse(ctxRefuels.dataset.quantity);
     const dates = JSON.parse(ctxRefuels.dataset.dates);
-
-    new Chart(ctxRefuels, {
+    let refuelChartCanvas = new Chart(ctxRefuels, {
       type: "bar",
       data: {
         labels: dates,
@@ -46,6 +61,7 @@ const refuelChart = () => {
         },
       },
     });
+    removeData(refuelChartCanvas);
   }
 };
 
