@@ -2,12 +2,13 @@ import Chart from "chart.js";
 let sliderValue = 10;
 const removeData = (chart) => {
   const sliderInput = document.querySelector("#refuel-number");
+  const step = sliderInput.step;
   if (sliderInput) {
     sliderInput.addEventListener("input", () => {
       if (sliderInput.value < sliderValue) {
-        chart.data.labels.splice(-sliderInput.value, 5);
+        chart.data.labels.splice(-sliderInput.value, step);
         chart.data.datasets.forEach((dataset) => {
-          dataset.data.splice(-sliderInput.value, 5);
+          dataset.data.splice(-sliderInput.value, step);
         });
       }
       sliderValue = sliderInput.value;
