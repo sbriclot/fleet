@@ -13,9 +13,9 @@
 		<h4>Détail des <span id='title-number'>10</span> derniers pleins</h4>
 		<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
 		<div>
-			<label for="refuel-number">Nombre de pleins</label>
-			<input type="range" id='refuel-number' min='5' max='25' value="10" step='5'>
-			<output for='refuel-number' id='number'>10</output>
+			<label for="refuel-slider">Nombre de pleins</label>
+			<input type="range" id='refuel-slider' min='5' max='25' value="10" step='5'>
+			<output for='refuel-slider' id='slider-value'>10</output>
 		</div>
 	</div>
 	<div>

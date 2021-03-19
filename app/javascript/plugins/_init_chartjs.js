@@ -1,10 +1,13 @@
 import Chart from "chart.js";
 let sliderValue = 10;
 const removeData = (chart) => {
-  const sliderInput = document.querySelector("#refuel-number");
+  const sliderInput = document.querySelector("#refuel-slider");
+  const ouputSlider = document.querySelector("#slider-value");
+  console.log(sliderInput);
   const step = sliderInput.step;
   if (sliderInput) {
     sliderInput.addEventListener("input", () => {
+      // Not working correctly, removes element when not supposed to.
       if (sliderInput.value < sliderValue) {
         chart.data.labels.splice(-sliderInput.value, step);
         chart.data.datasets.forEach((dataset) => {
@@ -12,6 +15,7 @@ const removeData = (chart) => {
         });
       }
       sliderValue = sliderInput.value;
+      ouputSlider.value = sliderInput.value;
       chart.update();
     });
   }
