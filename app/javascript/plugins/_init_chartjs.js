@@ -102,6 +102,17 @@ const averageChart = () => {
           },
         ],
       },
+      options: {
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              let label = data.datasets[tooltipItem.datasetIndex].label || "";
+              label += ` : ${tooltipItem.value} €`;
+              return label;
+            },
+          },
+        },
+      },
     });
   }
 };
