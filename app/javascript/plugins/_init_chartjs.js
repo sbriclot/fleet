@@ -103,6 +103,15 @@ const averageChart = () => {
         ],
       },
       options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
         tooltips: {
           callbacks: {
             label: function (tooltipItem, data) {
