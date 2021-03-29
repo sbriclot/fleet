@@ -48,6 +48,19 @@ const refuelChart = () => {
         ],
       },
       options: {
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              let label = data.datasets[tooltipItem.datasetIndex].label || "";
+              let dataset = tooltipItem.datasetIndex;
+
+              label && dataset === 1
+                ? (label += ` : ${tooltipItem.value} €`)
+                : (label += ` : ${tooltipItem.value} litres`);
+              return label;
+            },
+          },
+        },
         scales: {
           yAxes: [
             {
