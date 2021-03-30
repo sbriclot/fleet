@@ -1,21 +1,12 @@
 import Chart from "chart.js";
-let sliderValue = 10;
-const removeData = (chart) => {
+const dataSlider = (chart, datesData) => {
   const sliderInput = document.querySelector("#refuel-slider");
-  console.log(sliderInput.value);
-  const step = sliderInput.step;
   if (sliderInput) {
     sliderInput.addEventListener("input", () => {
-      // Not working correctly, removes element when not supposed to.
-      // Maybe check the size of the dataset
-      if (sliderInput.value < sliderValue) {
-        chart.data.labels.splice(-sliderInput.value, step);
-        chart.data.datasets.forEach((dataset) => {
-          dataset.data.splice(-sliderInput.value, step);
-        });
-        sliderValue = sliderInput.value;
-        chart.update();
-      }
+      // Only the labels need to be filtered, the chart handles linking the data.
+      const filteredLabels = datesData.slice(-sliderInput.value);
+      chart.data.labels = filteredLabels;
+      chart.update();
     });
   }
 };
@@ -78,12 +69,11 @@ const refuelChart = () => {
         },
       },
     });
-    removeData(refuelChartCanvas);
+    dataSlider(refuelChartCanvas, dates);
   }
 };
 
 const averageChart = () => {
-  // Need to add some breathing space for data by changing axis base values
   const ctxAverage = document.querySelector("#average-charts");
   if (ctxAverage) {
     const average = JSON.parse(ctxAverage.dataset.average);

@@ -4,7 +4,7 @@ class RefuelsController < ApplicationController
   before_action :find_fuels, only: %i[new create]
 
   def index
-    @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(:created_at).last(25)
+    @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(:created_at).last(30)
     # Data for the refuels details chart
     last_ten_refuels_info(@refuels)
     # Data for the twelve month history chart
