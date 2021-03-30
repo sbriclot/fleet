@@ -1,11 +1,18 @@
 import Chart from "chart.js";
-const dataSlider = (chart, datesData) => {
+const dataSlider = (chart, priceData, quantityData, datesData) => {
   const sliderInput = document.querySelector("#refuel-slider");
+  console.log(chart.data.datasets[0]);
   if (sliderInput) {
     sliderInput.addEventListener("input", () => {
-      // Only the labels need to be filtered, the chart handles linking the data.
+      // Filtering the data and labels based on input slider value
+      const filteredQuantity = quantityData.slice(-sliderInput.value);
+      const filteredPrices = priceData.slice(-sliderInput.value);
       const filteredLabels = datesData.slice(-sliderInput.value);
+      // Replacing the chart data with the filtered one
+      chart.data.datasets[0].data = filteredQuantity;
+      chart.data.datasets[1].data = filteredPrices;
       chart.data.labels = filteredLabels;
+      // Updating the chart
       chart.update();
     });
   }
@@ -69,7 +76,7 @@ const refuelChart = () => {
         },
       },
     });
-    dataSlider(refuelChartCanvas, dates);
+    dataSlider(refuelChartCanvas, price, quantity, dates);
   }
 };
 
