@@ -17,11 +17,11 @@
     <% fuel_id = fuel["id"] %>
     <% fuel_name = fuel["name"] %>
     <div class='tag-item'>
-      <%= check_box_tag fuel_name, fuel_id, fuel["checked"], :name => fuel_name, class: 'tag-selector' %>
+      <%= check_box_tag fuel_name, fuel_id, fuel["checked"], name: fuel_name, class: 'tag-selector' %>
       <%= label_tag fuel_name, fuel_name %>
     </div>
   <% end %>
-  <%= form_for @vehicle, url: upd_vehicle_fuels_vehicle_path, method: :post, :html => { :id => "vf-update" } do %>
+  <%= form_with( url: upd_vehicle_fuels_vehicle_path, id: "vf-update", local: false) do %>
     <%= hidden_field_tag 'cb-fuel-id' %>
     <%= hidden_field_tag 'cb-checked' %>
   <% end %>
