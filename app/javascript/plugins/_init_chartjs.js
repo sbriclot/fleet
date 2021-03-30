@@ -17,7 +17,7 @@ const refuelChart = () => {
     const price = JSON.parse(ctxRefuels.dataset.price);
     const quantity = JSON.parse(ctxRefuels.dataset.quantity);
     const dates = JSON.parse(ctxRefuels.dataset.dates);
-    let refuelChartCanvas = new Chart(ctxRefuels, {
+    const refuelChartCanvas = new Chart(ctxRefuels, {
       type: "bar",
       data: {
         labels: dates,
