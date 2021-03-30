@@ -1,5 +1,9 @@
 .range-container {
+  display: inline-flex;
   margin: 25px auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 #refuel-slider {
   -webkit-appearance: none;
@@ -68,4 +72,3 @@
     content: "";
   }
 }
-
