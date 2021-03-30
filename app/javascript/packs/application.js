@@ -27,7 +27,6 @@ require("channels");
 import { indexToggleDisplay } from "../components/shops/indexToggleDisplay";
 import { refuelChart, averageChart } from "../plugins/_init_chartjs";
 import { outputValue } from "../components/refuels/outputSliderValue.js";
-import { datepickr } from "../plugins/_init_flatpickr.js";
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
@@ -36,5 +35,4 @@ document.addEventListener("turbolinks:load", () => {
   refuelChart();
   averageChart();
   outputValue();
-  datepickr();
 });

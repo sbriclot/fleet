@@ -1,7 +1,7 @@
 <h1>Ajouter un plein</h1>
 <div class="form-container">
 	<%= simple_form_for ([@vehicle,@refuel]) do |f| %>
-		<%= f.input :date, label: 'Date',as: "string",input_html:{class: 'date-picker'}, error: 'Veuillez renseigner une date' %>
+		<%= f.input :date, label: 'Date', error: 'Veuillez renseigner une date' %>
 		<%= f.input :km, label: 'Kilométrage au moment du plein', input_html: { min:0 }, error:'Veuillez renseigner un kilométrage qui soit supérieur à 0' %>
 		<%= f.input :quantity,label: 'Quantité de carburant', input_html: { min:0 }, error: 'Veuillez renseigner une quantité qui soit supérieure à 0'%>
 		<%= f.input :price, label: 'Prix', input_html: { min:0 }, error: 'Veuillez renseigner un prix qui soit supérieur à 0' %>
