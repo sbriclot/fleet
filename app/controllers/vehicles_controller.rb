@@ -20,7 +20,7 @@ class VehiclesController < ApplicationController
     @vehicle.user = user
 
     if @vehicle.save
-      redirect_to vehicles_path, notice: "Vehicle successfully created"
+      redirect_to vehicle_path(@vehicle), notice: "Vehicle successfully created"
     else
       @action = "Ajouter"
       render :new
@@ -33,8 +33,7 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
-      @vehicle.save
-      redirect_to vehicles_path, notice: "Vehicle successfully updated"
+      redirect_to vehicle_path(@vehicle), notice: "Vehicle successfully updated"
     else
       @action = "Editer"
       render :edit

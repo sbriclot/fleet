@@ -1,0 +1,9 @@
+<h3><%= @action %> le rappel</h3>
+<%= simple_form_for [@vehicle, @reminder] do |f| %>
+  <%= f.input :task %>
+  <%= f.input :creation_km, input_html: { value: @reminder.creation_km || @vehicle.actual_km } %>
+  <%= f.input :limit_km %>
+  <%= f.input :limit_date, include_blank: true %>
+  <%= f.submit @action %>
+  <%= link_to "Annuler", vehicle_reminders_path %>
+<% end %>

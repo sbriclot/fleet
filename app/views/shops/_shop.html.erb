@@ -9,7 +9,7 @@
   <% if @action == "Editer" %>
     <%= f.input :closed %>
   <% end %>
-  <%= f.submit "#{@action} magasin" %>
+  <%= f.submit @action %>
 <% end %>
 
 <%= link_to "Retour à la liste des magasins", shops_path %>

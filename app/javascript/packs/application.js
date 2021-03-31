@@ -24,9 +24,13 @@ require("channels");
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+
 import { indexToggleDisplay } from "../components/shops/indexToggleDisplay";
 import { refuelChart, averageChart } from "../plugins/_init_chartjs";
 import { outputValue } from "../components/refuels/outputSliderValue.js";
+import { indexToggleDisplay } from '../components/shops/indexToggleDisplay';
+import { changeMaintenancePlan } from '../components/operations/changeMaintenancePlan';
+
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
@@ -35,4 +39,5 @@ document.addEventListener("turbolinks:load", () => {
   refuelChart();
   averageChart();
   outputValue();
+  changeMaintenancePlan();
 });
