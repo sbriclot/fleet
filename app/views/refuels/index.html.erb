@@ -1,0 +1,28 @@
+<div>
+	<h1>Pleins de carburant du véhicule <%= @vehicle.model %></h1>
+	<h3>Immatriculation : <%= @vehicle.registration %></h3>
+</div>
+<div>
+	<%= link_to 'Fiche technique du véhicule', vehicle_path(@vehicle) %>
+</div>
+<div>
+	<%= link_to 'Ajouter un plein de carburant', new_vehicle_refuel_path%>
+</div>
+<% if @refuels %>
+	<div>
+		<h4>Détail des <span id='title-number'>10</span> derniers pleins</h4>
+		<canvas id='refuels-charts' data-price=<%= @refuels_price.to_json %> data-quantity=<%= @refuels_quantity.to_json %> data-dates=<%= @refuels_dates.to_json %>></canvas>
+		<div class='range-container'>
+			<input type="range" id='refuel-slider' min='5' max='30' value="10" step='5'>
+			<span class='refuel-slider__value'>10</span>
+		</div>
+	</div>
+	<div>
+		<h4>Moyenne des dépenses mensuelles des 12 derniers mois</h4>
+		<canvas id='average-charts' data-average = <%=@average_price.to_json%> data-months= <%= @average_date.to_json %>></canvas>
+	</div>
+	<div>
+	<% else %>
+		<p>Désolé, ce véhicule n'a pas encore de plein de carburant</p>
+	</div>
+<% end %>

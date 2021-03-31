@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_104238) do
+ActiveRecord::Schema.define(version: 2021_02_15_084259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_104238) do
     t.string "invoice_ref"
     t.bigint "invoice_type_id", null: false
     t.text "remarks"
-    t.float "price"
+    t.decimal "price", precision: 7, scale: 2
     t.bigint "vehicle_id", null: false
     t.bigint "shop_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -107,9 +107,9 @@ ActiveRecord::Schema.define(version: 2021_02_02_104238) do
 
   create_table "refuels", force: :cascade do |t|
     t.date "date"
-    t.float "km"
-    t.float "quantity"
-    t.float "price"
+    t.decimal "km", precision: 5, scale: 1
+    t.decimal "quantity", precision: 5, scale: 2
+    t.decimal "price", precision: 5, scale: 2
     t.bigint "fuel_id", null: false
     t.bigint "vehicle_id", null: false
     t.datetime "created_at", precision: 6, null: false
