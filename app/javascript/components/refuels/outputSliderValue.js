@@ -7,7 +7,7 @@ function outputValue() {
     titleSpan.textContent = inputSlider.value;
   };
   if (inputSlider) {
-    inputSlider.addEventListener("load", updateValue);
+    window.addEventListener("load", updateValue);
     inputSlider.addEventListener("input", updateValue);
   }
 }

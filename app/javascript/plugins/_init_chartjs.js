@@ -1,7 +1,6 @@
 import Chart from "chart.js";
 const dataSlider = (chart, priceData, quantityData, datesData) => {
   const sliderInput = document.querySelector("#refuel-slider");
-  console.log(chart.data.datasets[0]);
   if (sliderInput) {
     sliderInput.addEventListener("input", () => {
       // Filtering the data and labels based on input slider value
@@ -24,21 +23,22 @@ const refuelChart = () => {
     const price = JSON.parse(ctxRefuels.dataset.price);
     const quantity = JSON.parse(ctxRefuels.dataset.quantity);
     const dates = JSON.parse(ctxRefuels.dataset.dates);
+    const sliderInput = document.querySelector("#refuel-slider");
     const refuelChartCanvas = new Chart(ctxRefuels, {
       type: "bar",
       data: {
-        labels: dates,
+        labels: dates.slice(-sliderInput.value),
         datasets: [
           {
             label: "Quantité de carburant",
-            data: quantity,
+            data: quantity.slice(-sliderInput.value),
             backgroundColor: "rgba(169,169,245, 1)",
             borderColor: "rgba(49,4,180, 1)",
             borderWidth: 1,
           },
           {
             label: "Prix du plein",
-            data: price,
+            data: price.slice(-sliderInput.value),
             backgroundColor: "rgba(90,192,77, 0.5)",
             borderColor: "rgba(30,111,20, 1)",
             borderWidth: 1,
