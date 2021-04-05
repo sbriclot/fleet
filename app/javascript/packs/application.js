@@ -29,6 +29,7 @@ import { indexToggleDisplay } from "../components/shops/indexToggleDisplay";
 import { refuelChart, averageChart } from "../plugins/_init_chartjs";
 import { outputValue } from "../components/refuels/outputSliderValue.js";
 import { changeMaintenancePlan } from '../components/operations/changeMaintenancePlan';
+import { updateVehicleFuels } from '../components/vehicles/updateVehicleFuels';
 
 
 document.addEventListener("turbolinks:load", () => {
@@ -39,4 +40,5 @@ document.addEventListener("turbolinks:load", () => {
   averageChart();
   outputValue();
   changeMaintenancePlan();
+  updateVehicleFuels();
 });

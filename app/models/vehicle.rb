@@ -7,6 +7,7 @@ class Vehicle < ApplicationRecord
   has_many :refuels
   has_many :reminders
   has_many :vehicle_fuels
+  has_many :fuels, through: :vehicle_fuels
   has_one_attached :photo
 
   validates :sale_km, numericality: { greater_than: :purchase_km }, allow_nil: true

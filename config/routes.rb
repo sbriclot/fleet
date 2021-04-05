@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     end
     resources :reminders, except: %i[show]
     resources :documentations, except: %i[show destroy]
+    post 'upd_vehicle_fuels', on: :member
   end
 end
