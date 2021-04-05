@@ -1,5 +1,4 @@
 <h2> <%= @vehicle.brand %> <%= @vehicle.model %> </h2>
-
 <ul>
 	<li> <strong> registration :</strong> <%= @vehicle.registration %></li>
 	<li> <strong> sn :</strong> <%= @vehicle.sn %></li>
@@ -31,6 +30,8 @@
 <%= link_to "Editer ce véhicule", edit_vehicle_path(@vehicle) %>
 <br>
 <%= link_to "Plan de maintenance", vehicle_maintenance_plans_path(@vehicle) %>
+<br>
+<%= link_to "Plein de carburant réalisés", vehicle_refuels_path(@vehicle)  %>
 <br>
 <%= link_to "Maintenance", vehicle_maintenances_path(@vehicle) %>
 <br>

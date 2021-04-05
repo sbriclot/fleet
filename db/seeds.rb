@@ -131,7 +131,7 @@ vf_list = [].append(sp98.id).append(sp95.id)
 while refuel_date < today
   refuel_km = Random.new.rand(600..750)
   refuel_quantity = 50 - Random.new.rand(2..20)
-  refuel_price = refuel_quantity * Random.new.rand(1.10..1.35)
+  refuel_price = (refuel_quantity * Random.new.rand(1.10..1.35)).round(2)
   Refuel.create(
     date: refuel_date,
     km: refuel_km,
@@ -213,7 +213,7 @@ while swap_date < today
     task: "Swap pneus",
     maintenance_id: maintenance.id
   )
-      
+
   if month == 11
     year += 1
     month = 4
