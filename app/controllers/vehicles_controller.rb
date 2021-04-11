@@ -2,7 +2,6 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[show edit update upd_vehicle_fuels]
 
   def index
-    @all_vehicles = Vehicle.all     # a supprimer
     @vehicles = Vehicle.where(user_id: current_user.id)
   end
 
