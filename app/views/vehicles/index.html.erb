@@ -2,13 +2,6 @@
 
 <%= link_to "Ajouter un véhicule", new_vehicle_path %>
 
-<h3>Tous les véhicules (Temporaire)</h3> <!-- A supprimer -->
-<ul>
-    <% @all_vehicles.each do |vehicle| %>
-        <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> </li>
-    <% end %>
-</ul>
-
 <h3>Mes véhicules</h3>
 <ul>
     <% @vehicles.each do |vehicle| %>
