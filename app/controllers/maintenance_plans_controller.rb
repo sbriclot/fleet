@@ -1,6 +1,6 @@
 class MaintenancePlansController < ApplicationController
   before_action :set_plan, only: %i[edit update destroy]
-  before_action :set_vehicle
+  before_action { set_vehicle(params[:vehicle_id]) }
   before_action :populate_index, only: %i[index edit]
 
   def index
@@ -49,10 +49,6 @@ class MaintenancePlansController < ApplicationController
 
   def set_plan
     @plan = MaintenancePlan.find(params[:id])
-  end
-
-  def set_vehicle
-    @vehicle = Vehicle.find(params[:vehicle_id])
   end
 
   def plan_params
