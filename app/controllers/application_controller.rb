@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     end
 
     def record_not_found
-      redirect_to vehicles_path, alert: "Ce véhicule n'existe pas !"
+      prefix = helpers.rnf_prefix(params[:controller])
+      redirect_to vehicles_path, alert: "#{prefix} n'existe pas !"
     end
 end
