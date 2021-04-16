@@ -4,3 +4,23 @@
   right: 16px;
   z-index: 1000;
 }
+
+.flash-msg {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 2px solid black;
+  text-align: center;
+  font-weight: bold;
+}
+
+.flash-notice {
+  color: green;
+  border-color: green;
+  background-color: lightgreen;
+}
+
+.flash-alert {
+  color: red;
+  border-color: red;
+  background-color: lightcoral;
+}
