@@ -53,7 +53,7 @@ const refuelChart = () => {
               let dataset = tooltipItem.datasetIndex;
 
               label && dataset === 1
-                ? (label += ` : ${tooltipItem.value} €`)
+                ? (label += ` : ${(+tooltipItem.value).toFixed(2)} €`)
                 : (label += ` : ${tooltipItem.value} litres`);
               return label;
             },
