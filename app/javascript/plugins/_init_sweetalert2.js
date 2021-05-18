@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 const test = () => {
-  Swal.fire("Any fool can use a computer");
+  Swal.fire("The Internet?", "That thing is still around?", "question");
 };
 
 export { test };
