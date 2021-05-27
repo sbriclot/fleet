@@ -4,11 +4,11 @@
   <% end %>
   <div class="navbar-right">
      <% if user_signed_in? %>
-        <div><%= current_user.email %> </div>
-        <i class="fas fa-bars"></i>
+         <div><%= current_user.email %> </div>
+         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
      <% else %>
          <%= link_to "Login", new_user_session_path %>
       <% end %>
    </div>
 </div>
-   
+
