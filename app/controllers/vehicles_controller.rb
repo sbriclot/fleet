@@ -1,5 +1,7 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[show edit update upd_vehicle_fuels]
+  before_action only: %i[show edit update upd_vehicle_fuels] do
+    set_vehicle(params[:id])
+  end
 
   def index
     @vehicles = Vehicle.where(user_id: current_user.id)
@@ -70,9 +72,5 @@ class VehiclesController < ApplicationController
                                     :purchase_date, :purchase_km,
                                     :sale_date, :sale_km,
                                     :photo)
-  end
-
-  def set_vehicle
-    @vehicle = Vehicle.find(params[:id])
   end
 end

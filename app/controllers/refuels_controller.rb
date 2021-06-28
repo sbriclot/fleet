@@ -1,7 +1,9 @@
 class RefuelsController < ApplicationController
   before_action :params_refuel, only: %i[create]
-  before_action :find_vehicle, only: %i[index create new]
-  before_action :find_fuels, only: %i[new create]
+  before_action only: %i[index create new] do
+    set_vehicle(params[:vehicle_id])
+  end
+  before_action :set_fuels, only: %i[new create]
 
   def index
     @refuels = Refuel.where(vehicle_id: params[:vehicle_id]).order(:created_at).last(30)
@@ -36,11 +38,7 @@ class RefuelsController < ApplicationController
     params.require(:refuel).permit(:date, :km, :quantity, :price, :fuel_id, :vehicle_id)
   end
 
-  def find_vehicle
-    @vehicle = Vehicle.find(params[:vehicle_id])
-  end
-
-  def find_fuels
+  def set_fuels
     fuel_ids = []
     VehicleFuel.where(vehicle_id: params[:vehicle_id]).find_each do |fuel|
       fuel_ids << fuel.fuel_id

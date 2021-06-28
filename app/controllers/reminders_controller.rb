@@ -1,6 +1,6 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: %i[edit update destroy]
-  before_action :set_vehicle
+  before_action { set_vehicle(params[:vehicle_id]) }
   before_action :populate_index, only: %i[index edit]
 
   def index
@@ -47,10 +47,6 @@ class RemindersController < ApplicationController
 
   def set_reminder
     @reminder = Reminder.find(params[:id])
-  end
-
-  def set_vehicle
-    @vehicle = Vehicle.find(params[:vehicle_id])
   end
 
   def reminder_params

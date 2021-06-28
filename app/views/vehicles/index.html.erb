@@ -1,14 +1,16 @@
 <h2>INDEX VEHICLES</h2>
 
-<%= link_to "Ajouter un véhicule", new_vehicle_path %>
+<div>
+  <%= link_to "Ajouter un véhicule", new_vehicle_path %>
+</div>
 
-<h3>Mes véhicules</h3>
-<ul>
+<div>
+  <h3>Mes véhicules</h3>
+  <ul>
     <% @vehicles.each do |vehicle| %>
-        <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> 
-        <br> <%= link_to "Fiche technique", vehicle_path(vehicle.id) %>
-        </li>
+      <li> <strong> <%= vehicle.brand %> </strong> <%= vehicle.model %> 
+      <br> <%= link_to "Fiche technique", vehicle_path(vehicle.id) %>
+      </li>
     <% end %>
-</ul>
-
-
+  </ul>
+</div>
