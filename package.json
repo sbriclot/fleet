@@ -2,18 +2,24 @@
   "name": "fleet",
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.16.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "chart.js": "^2.9.4",
     "flatpickr": "^4.6.9",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react_ujs": "^2.6.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.1"
+    "webpack-dev-server": "^4.4.0"
   }
 }
