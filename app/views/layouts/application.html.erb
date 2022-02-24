@@ -12,15 +12,15 @@
   </head>
 
   <body>
-    
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="container">
-      <% flash.each do |type, msg| %>
-        <div class="flash-msg <%= "flash-#{type}" %>">
-          <%= msg %>
-        </div>
-      <% end %>
+      <%# <% flash.each do |type, msg| %>
+        <%# <div class="flash-msg <%= "flash-#{type}" %>
+          <%# <%= msg %>
+        <%# </div> %>
+      <%# <% end %>
       <%= yield %>
     </div>
   </body>
