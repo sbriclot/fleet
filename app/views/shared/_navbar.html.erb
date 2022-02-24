@@ -4,11 +4,11 @@
   <% end %>
   <div class="navbar-right">
      <% if user_signed_in? %>
-        <div><%= current_user.email %> </div>
+        <%= current_user.email %>
         <i class="fas fa-bars"></i>
      <% else %>
          <%= link_to "Login", new_user_session_path %>
       <% end %>
    </div>
 </div>
-   
+
