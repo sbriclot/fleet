@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :set_shop, only: %i[edit update]
+  before_action :set_shop, only: %i[edit update show]
 
   def index
     @shops = Shop.all.order(:name)
@@ -31,6 +31,9 @@ class ShopsController < ApplicationController
       @action = "Editer"
       render :edit
     end
+  end
+
+  def show
   end
 
   private
